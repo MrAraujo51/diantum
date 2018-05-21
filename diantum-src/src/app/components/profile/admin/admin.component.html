@@ -1,0 +1,174 @@
+
+<div class="row m-t-10 p-t-30">
+  <div class="col-md-6">
+    <h3 class="section-title left m-b-30">{{ 'Administradores' | translate }}</h3>
+  </div>
+</div>
+<div class="col-md-12 m-b-140">
+  <h4 class="section-title">
+    <strong>{{ 'Mis productos' | translate }}</strong>
+  </h4>
+  <div class="panel-group panel-accordion light-accordion" id="accordion" *ngIf="productsLoaded">
+    <!-- Begin first instance block -->
+    <h4 *ngIf="!instances?.length">
+      <label>{{ 'No hay gamificaciones' | translate }}</label>
+    </h4>
+    <div class="panel panel-default" *ngFor="let instance of instances; let i = index">
+      <div class="panel-heading">
+
+        <div class="col-md-12 border p-t-10 bg-info">
+          <a class="no-border no-background color-white" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{i}}">
+            <div class="row">
+              <div class="col-md-2">
+                <img class="img-lg" [src]="instance.image" alt="candies game">
+              </div>
+
+              <div class="col-md-6">
+                <div class="row">
+                  <i class="line-icon-trophy"></i>
+                  <label> -{{ instance.code }} - </label>
+                  <label> {{ instance.name | translate}}</label>
+                </div>
+                <div class="row">
+                  <label>{{instance.description}}</label>
+                </div>
+                <div class="row">
+                  <i class="line-icon-calendar"></i>
+                  <label>{{ instance.iat | date: 'dd/MM/yyyy' }}</label>
+                  <label>-{{ instance.exp | date: 'dd/MM/yyyy' }}</label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="col-md-12">
+                  <div class="row">
+                    <label>{{ 'Código de acceso' | translate | uppercase }}:
+                      <strong> {{ instance.token | uppercase}} </strong>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+          <div class="row" *ngIf="instance.rol == 'user'">
+            <div class="col-md-9">
+              <div class="form-group">
+                <div class="input-group col-md-offset-3">
+                  <input type="password" class="form-control form-white border" [(ngModel)]="pin[i]" maxlength="6" pattern="\d{4}">
+                  <span class="input-group-addon btn btn-dark" (click)="changeRol(instance, i)">PIN</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of product box -->
+      </div>
+      <!-- End of Panel Heading -->
+      <div class="col-md-12" *ngIf="instance.rol == 'admin'">
+        <div id="collapse-{{i}}" class="panel-collapse collapse" [ngClass]="{'show': i == 0}">
+          <div class="panel-body">
+            <div class="col-md-12 tabs-light">
+              <ul class="nav nav-tabs">
+                <li class="active">
+                  <a class="no-background" href="#tabAdmin{{i}}_1" data-toggle="tab">{{ 'Panel de administración' | translate }}</a>
+                </li>
+                <li>
+                  <a class="no-background" href="#tabAdmin{{i}}_2" data-toggle="tab">{{ 'Relación de usuarios' | translate }}</a>
+                </li>
+                <li>
+                  <a class="no-background" href="#tabAdmin{{i}}_3" data-toggle="tab">{{ 'Registro de ejecuciones' | translate }}</a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane fade active show" id="tabAdmin{{i}}_1">
+                  <div class="col-md-12">
+                    <p class="center">{{ 'Desde aquí puede modificar los parámetros operativos de su instancia' | translate }}</p>
+                    <div class="col-md-6 col-md-offset-3" >
+                      <dynamic-form
+                        [config]="getConfigParams(instance.code)"
+                        [id]=instance._id
+                        #form="dynamicForm"
+                        (submit)="submit($event)">
+                      </dynamic-form>
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="text-center col-md-3 col-md-offset-3">
+                          <button type="reset" class="btn btn-animated pull-left btn-default btn-cancel">{{ 'Cancelar' | translate }}</button>
+                        </div>
+                        <div class="text-center col-md-6">
+                          <button type="submit" (click)="submit(i, instance._id)" class="btn btn-animated btn-primary pull-right btn-signup">{{ 'Guardar' | translate }}
+                            <i class="line-icon-arrow-right"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="tabAdmin{{i}}_2">
+                  <h3 class="section-title center">
+                    <strong>{{ 'Usuarios de la instancia' | translate }}</strong>
+                  </h3>
+                  <div class="row center">
+                    <label class="col-md-6 control-label">{{ 'Usuarios máximos' | translate }}</label>
+                    <label class="col-md-offset-3">{{instance.maxUser}}</label>
+                  </div>
+                  <div class="row center">
+                    <label class="col-md-6 control-label">{{ 'Usuarios asignados' | translate }}</label>
+                    <label class="col-md-offset-3">{{instance.usersActive}}</label>
+                  </div>
+                  <div class="col-md-6 col-md-offset-3">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>{{ 'Usuario' | translate }}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let user of users[i]; let index = index">
+                          <td>{{index + 1}}</td>
+                          <td>{{user}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  
+                </div>
+                <div class="tab-pane fade" id="tabAdmin{{i}}_3">
+                  <h3 class="section-title center"><strong>{{ 'Detalle de uso de la instancia' | translate }}</strong></h3>
+                  <table class="table table-striped f-12">
+                    <thead>
+                      <tr>
+                        <th>
+                          <h5>#</h5>
+                        </th>
+                        <th>
+                          <h5>{{ 'Ejecución' | translate }}</h5>
+                        </th>
+                        <th>
+                          <h5>{{ 'Usuario' | translate }}</h5>
+                        </th>
+                        <th *ngFor="let name of getColumnsName(instance.code)">
+                          <h5>{{ name | translate }}</h5>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let session of instance.sess; let index = index">
+                        <td>{{ index +1 }}</td>
+                        <td>{{ session.date | date: 'medium' }}</td>
+                        <td>{{ session.username }}</td>
+                        <td *ngFor="let result of session.result | keys">{{ result.value }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of panel-group. Panel accordion -->
+</div>

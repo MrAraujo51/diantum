@@ -1,0 +1,166 @@
+<div class="row m-t-10 p-t-30">
+  <div class="col-md-12">
+    <h3 class="section-title left m-b-30">{{ 'Usuarios' | translate }}</h3>
+  </div>
+  <div class="col-md-12 tabs-light">
+    <ul class="nav nav-tabs nav-primary">
+      <li class="active">
+        <a href="#tab1_1" data-toggle="tab">{{ 'Alta de codigo de acceso' | translate }}</a>
+      </li>
+      <li>
+        <a href="#tab1_2" data-toggle="tab">{{ 'Mis productos' | translate }}</a>
+      <!-- </li>
+      <li>
+        <a href="#tab1_3" data-toggle="tab">Contraseña</a>
+      </li> -->
+    </ul>
+    <!-- Block 1. Users. Token update -->
+    <div class="tab-content">
+      <div class="tab-pane border-top fade active in" id="tab1_1">
+        <div class="col-md-12 line-separator">
+          <p>{{ 'Introduzca su Código de Acceso para activar su gamificación' | translate }}:</p>
+          <div class="input-group">
+            <input type="text" [(ngModel)]="token" name="token" class="form-control form-white placeholder" placeholder="{{ 'Código de acceso' | translate }}">
+            <span class="input-group-addon btn btn-primary" (click)="registerInstance()" [ngClass]="{'disabled': processing}">{{ 'Registrar Código de Acceso' | translate }}</span>
+          </div>
+          <div *ngIf="suscription">
+            <h4>
+              <label>{{ 'Descripción de la instancia' | translate }}</label>
+            </h4>
+            <div class="col-md-12 border p-t-10 bg-info color-white">
+              <div class="row">
+                <div class="col-md-2">
+                  <img class="" style="height: 35px; width: auto;" [src]="suscription.image" alt="candies game">
+                </div>
+
+                <div class="col-md-6">
+                  <div class="row">
+                    <i class="line-icon-trophy"></i>
+                    <label> -1701.1 - </label>
+                    <label> {{ suscription.name | translate }}</label>
+                  </div>
+                  <div class="row">
+                    <label>{{ suscription.description}}</label>
+                  </div>
+                  <div class="row">
+                    <i class="line-icon-calendar"></i>
+                    <label>{{ suscription.iat | date: 'dd/MM/yyyy'}} - {{ suscription.exp | date: 'dd/MM/yyyy'}}</label>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="col-md-12">
+                    <div class="row">
+                      <label>{{ 'Código de Acceso' | translate }}:
+                        <strong> {{suscription.token | uppercase}} </strong>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- End of block 1 -->
+      <!-- Begin block 2. User´s products -->
+      <div class="tab-pane fade" id="tab1_2">
+        <div class="col-md-12 border-top  f-12 p-t-30 p-b-60">
+          <h3 class="section-title center">{{ 'Instancias gamificación' | translate }}</h3>
+          <h4 *ngIf="!instances.length">
+            <label>{{ 'No hay gamificaciones' | translate }}</label>
+          </h4>
+          <table class="table table-bordered" *ngIf="instances.length">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>{{ 'Código' | translate }}</th>
+                <th>{{ 'Nombre' | translate }}</th>
+                <th>{{ 'Descripción' | translate }}</th>
+                <th>{{ 'Inicio' | translate }}</th>
+                <th>{{ 'Fin' | translate }}</th>
+                <th>{{ 'Estado' | translate }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let instance of instances; let i = index">
+                <td>{{i + 1}}</td>
+                <td>
+                  <img class="" style="height: 35px; width: auto;" [src]="instance.image" alt="candies game" />{{ instance.code }}</td>
+                <td>{{ instance.name | translate }}</td>
+                <td>{{ instance.description }}</td>
+                <td>{{ instance.iat | date: 'dd/MM/yyyy' }}</td>
+                <td>{{ instance.exp | date: 'dd/MM/yyyy' }}</td>
+                <td>
+                  <a>
+                    <span class="input-group btn {{ instance.access.class }} animated visible" (click)="goToInstace(instance)">{{ instance.access.message | translate}} </span>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- End of block 2 -->
+      <!-- Begin block 3. User´s password -->
+      <!-- <div class="tab-pane fade" id="tab1_3">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12 border-top">
+            <form [formGroup]="passForm" (submit)="onChangeSubmitPass()" class="form-validation">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Contraseña actual</label>
+                    <div class="append-icon">
+                      <input type="password" formControlName="password" name="password_old" class="form-control form-white" required>
+                      <i class="icon-lock"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Nueva contraseña</label>
+                    <div class="append-icon" [ngClass]="{'has-error': (passForm.get('newPassword').errors && passForm.get('newPassword').dirty), 'has-success': !passForm.get('newPassword').errors}">
+                      <input type="password" formControlName="newPassword" name="newPassword" class="form-control form-white" required>
+                      <i class="line-icon-lock"></i>
+                      <ul class="help-block">
+                        <li *ngIf="passForm.get('newPassword').hasError('required') && passForm.get('newPassword').touched">Debe ingresar una contraseña</li>
+                        <li *ngIf="passForm.get('newPassword').hasError('upperCase') && passForm.get('newPassword').dirty">Por lo menos una letra mayuscula</li>
+                        <li *ngIf="passForm.get('newPassword').hasError('lowerCase') && passForm.get('newPassword').dirty">Por lo menos una letra miniscula</li>
+                        <li *ngIf="passForm.get('newPassword').hasError('number') && passForm.get('newPassword').dirty">Por lo menos un numero</li>
+                        <li *ngIf="passForm.get('newPassword').hasError('specialCharacter') && passForm.get('newPassword').dirty">Por lo menos un caracter especial</li>
+                        <li *ngIf="passForm.get('newPassword').hasError('minlength') && passForm.get('newPassword').dirty">Por lo menos 8 caracteres</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="control-label">Repetir nueva contraseña</label>
+                    <div class="append-icon" [ngClass]="{'has-error': (passForm.get('confirmNew').errors && passForm.get('confirmNew').dirty), 'has-success': !passForm.get('confirmNew').errors}">
+                      <input type="password" formControlName="confirmNew" name="confirmNew" class="form-control form-white" required>
+                      <i class="icon-lock"></i>
+                      <ul class="help-block">
+                        <li *ngIf="passForm.get('confirmNew').hasError('required') && passForm.get('confirmNew').touched">La confirmación de contraseña no puede estar vacía</li>
+                        <li *ngIf="passForm.hasError('matchingPasswords') && passForm.get('confirmNew').dirty">La contraseña no coincide</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center  m-t-20">
+                <button type="reset" class="btn btn-animated pull-left btn-default btn-cancel">Cancelar</button>
+                <button type="submit" class="btn btn-animated btn-primary pull-right btn-signup" [disabled]="processing"> Modificar
+                  <i class="fa fa-chevron-right"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>

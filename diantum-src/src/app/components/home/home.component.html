@@ -1,0 +1,33 @@
+<!-- Top Background Slider Image -->
+<header class="center height-full parallax" style="background-image: url('assets/images/gallery/banner-dnt.jpg');background-position: 50% 100% !important;">
+  <div class="section-overlay"></div>
+  <div class="top-element">
+    <div class="top-text fade-text top-text-p">
+      <h1 class="well-come-dnt">{{ 'Home.header.h1' | translate }}</h1>
+      <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+        <p class="intro-message-dnt">{{ 'Home.header.p' | translate }}</p>
+        <a [routerLink]="['/profile']" class="btn button-line button-default btn-rounded hover-effect m-r-30">{{ 'Home.header.Tengo un Código de Acceso' | translate }}</a>
+        <a *ngIf="translate.currentLang === 'es'" href="http://www.diantum.com/index.php/es/" target="_blank" class="btn btn-blue btn-rounded hover-effect">{{ 'Home.header.Más información' | translate }}</a>
+        <a *ngIf="translate.currentLang === 'en'" href="http://www.diantum.com/index.php/en/" target="_blank" class="btn btn-blue btn-rounded hover-effect">{{ 'Home.header.Más información' | translate }}</a>        
+      </div>
+    </div>
+    <div class="scroll-down go-section-two"><span></span></div>
+  </div>
+</header>
+<!-- End Top Background Slider Image -->
+
+<!-- Begin Call to Action Contact -->
+<section class="section-call-action bg-gray-light">
+  <div class="container center">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="section-title">{{ 'Home.header.Si tiene preguntas o sugerencias, estamos encantados de atenderle' | translate }}</h3>
+      </div>
+      <div class="col-md-12">
+        <a *ngIf="translate.currentLang === 'es'" href="http://www.diantum.com/index.php/es/contact-us-3" target="_blank" class="btn btn-dark btn-rounded hover-effect">{{ 'Home.header.Contacte con nosotros' | translate }}</a>
+        <a *ngIf="translate.currentLang === 'en'" href="http://www.diantum.com/index.php/en/contact-us-2" target="_blank" class="btn btn-dark btn-rounded hover-effect">{{ 'Home.header.Contacte con nosotros' | translate }}</a>        
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Call to Action Contact -->

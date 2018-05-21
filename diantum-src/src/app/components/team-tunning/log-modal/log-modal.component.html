@@ -1,0 +1,12 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ 'Registro de Acciones' | translate }}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p *ngIf="!selectedComp.log.length">{{ 'No se han realizado acciones' | translate }}</p>
+  <p *ngFor="let act of selectedComp.log">{{ act }}</p>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close()">{{ 'Cerrar' | translate }}</button>
+</div>

@@ -1,0 +1,179 @@
+<section class="section-ecommerce">
+  <aside id="aside" class="sidebar-product" style="background: #788cb9;">
+    <div class="sidebar-inner">
+      <div class="categories">
+        <div class="breadcrumbs clearfix">
+          <a [routerLink]="['/home']" class="home"><i class="line-icon-home"></i></a>
+          <a [routerLink]="['/products']" class="nolink">{{ 'Productos' | translate }}</a>
+          <a href="#" class="nolink">{{ 'Formación' | translate }}</a>
+          <a href="#" class="nolink">{{ 'Sales Cyclum<' | translate }}</a>
+        </div>
+      </div>
+      <h2 class="item-name">{{ 'Sales Cyclum' | translate }}</h2>
+      <div class="row">
+        <h3 class="item-number col-sm-3">Ref. 1709.1</h3>
+        <div class="col-sm-4">
+          <div class="small-images">
+            <a href="">
+              <img src="assets/images/gallery/salescyclummini3.jpg" class="img-responsive img-square" alt="sales cyclum mini logo">
+             </a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="item-actions col-sm-6">
+          <a *ngIf="translate.currentLang === 'es'" href="http://www.diantum.com/index.php/es/shop-es/categories-2/product/sales-cyclum-es" target="_blank" class="btn btn-white btn-animated"><i class="line-icon-basket"></i>{{ 'Consiga su acceso' | translate }}</a>
+          <a *ngIf="translate.currentLang === 'en'" href="http://www.diantum.com/index.php/en/shop-en/categories-3/product/sales-cyclum" target="_blank" class="btn btn-white btn-animated"><i class="line-icon-basket"></i>{{ 'Consiga su acceso' | translate }}</a>          
+        </div>
+      </div>
+      <div class="panel-group panel-accordion" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4>
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                  {{ 'Características Principales' | translate }}
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse show">
+            <div class="panel-body c-white">
+              <ul>
+                <li>{{ 'Uso individual o para grupos' | translate }}</li>
+                <li>{{ 'Actividad comercial' | translate }}</li>
+                <li>{{ 'Funcionalidad específica para instructores' | translate }}</li>
+                <li>{{ 'Variabilidad de parámetros' | translate }}</li>
+                <li>{{ 'Gráficos de rendimiento en tiempo real' | translate }}</li>
+                <li>{{ 'Disponibilidad inmediata' | translate }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4>
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                  {{ 'Elementos de aprendizaje' | translate }}
+                </a>
+            </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse">
+            <div class="panel-body c-white">
+              <ul>
+                <li>{{ 'El ciclo de venta' | translate }}</li>
+                <li>{{ 'La gestión del tiempo' | translate }}</li>
+                <li>{{ 'La eficiencia comercial' | translate }}</li>
+                <li>{{ 'Clientes potenciales' | translate }}</li>
+                <li>{{ 'Visitas comerciales' | translate }}</li>
+                <li>{{ 'Presentación de ofertas' | translate }}</li>
+                <li>{{ 'Cierre de contratos' | translate }}</li>
+                <li>{{ 'Ratios y seguimiento' | translate }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4>
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                  {{ 'Mecánica de gamificación' | translate }}
+                </a>
+            </h4>
+          </div>
+          <div id="collapseThree" class="panel-collapse collapse">
+            <div class="panel-body c-white">
+              <ul>
+                <li>{{ 'Reto: conseguir los objetivos comerciales con la mejor eficiencia' | translate }}</li>
+                <li>{{ 'Panel de control' | translate }}</li>
+                <li>{{ 'Generación de oportunidades' | translate }}</li>
+                <li>{{ 'Propensión de clientes variable' | translate }}</li>
+                <li>{{ 'Panel de control del tiempo' | translate }}</li>
+                <li>{{ 'Registro de ejecuciones' | translate }}</li>
+                <li>{{ 'Compite con el resto de participantes' | translate }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="item-page clearfix">
+    <div class="item-image" style="background: #ffffff;">
+
+      <div class="magnific" data-mfp-src="assets/images/gallery/sales-cyclum-07.jpg">
+        <img class="main-image " src="assets/images/gallery/salescyclum.png" alt="sales cyclum logo">
+      </div>
+    </div>
+    <div class="item-info clearfix">
+      <div class="category-tab shop-details-tab">
+        <div class="col-sm-12 text-center">
+          <ul class="nav nav-tabs clearfix">
+            <li><a class="active" href="#details" data-toggle="tab">{{ 'Detalles' | translate }}</a></li>
+            <li>
+              <a *ngIf="translate.currentLang === 'es'" href="http://www.diantum.com/index.php/es/shop-es/categories-2/product/sales-cyclum-es" target="_blank" data-toggle="tab">{{ 'Comentarios' | translate }}</a>
+              <a *ngIf="translate.currentLang === 'en'" href="http://www.diantum.com/index.php/en/shop-en/categories-3/product/sales-cyclum" target="_blank" data-toggle="tab">{{ 'Comentarios' | translate }}</a>              
+            </li>
+            <li><a [routerLink]="['/sales-cyclum/simulation']">{{ 'Acceso gratis a la simulación' | translate }}</a></li>
+          </ul>
+        </div>
+        <div class="tab-content">
+          <div class="tab-pane fade active in" id="details">
+            <h2>{{ 'Sales Cyclum' | translate }}</h2>
+            <h4 style="text-transform: none;">{{ 'Innovación al servicio de la formación en gestión comercial' | translate }}</h4>
+            <div class="left">
+              <h3>{{ 'Introducción' | translate }}</h3>
+              <h4 style="text-transform: none;">{{ 'Las actividades del ciclo de ventas analizadas en detalle' | translate }}</h4>
+              <p>
+                <b>{{ 'Sales Cyclum' | translate }}</b> {{ 'es una gamificación que ilustra la importancia de la adecuada gestión del tiempo en cada fase de la actividad comercial, dentro del ciclo de venta: desde que se identifica una oportunidad de venta o cliente potencial, pasando por los distintos procesos comerciales hasta que se produce el cierre de la venta.' | translate }}</p>
+              <p>{{ 'Por su diseño, que incluye los procesos habituales en cualquier organización comercial, es una herramienta de gran valor en la formación de personal de ventas en todos los sectores. La generación y evaluación de oportunidades, preparación y realización de visitas comerciales, elaboración y presentación de ofertas y reuniones de cierre de ventas son partes del proceso principal. Con una funcionalidad orientada a ilustrar los aspectos claves del éxito en el ciclo de ventas y apoyándose en la tecnología más avanzada, es una solución excepcional para profesores y alumnos que quieran analizar, de forma interactiva y visual, los aspectos clave del mundo de la gestión comercial.' | translate }}</p>
+              <h3>{{ 'Temática' | translate }}</h3>
+              <h4 style="text-transform: none;">{{ 'El reto de conseguir los objetivos de ventas con el mayor nivel de eficiencia comercial' | translate }}</h4>
+              <p>
+                  {{ 'En esta simulación, los alumnos se enfrentan al reto de conseguir los objetivos de ventas. Estos objetivos tienen valor por defecto que puede ser modificado por el instructor o administrador del juego. Disponen para ello de total autonomía en su gestión diaria para realizar las tareas comerciales y tomar las decisiones que consideren más oportunas. Como en la vida real, los usuarios de Sales Cyclum tienen que realizar diferentes tareas para conseguir sus objetivos, como por ejemplo generar oportunidades de ventas, evaluar la propensión a la compra de sus clientes potenciales, organizar visitas para explicar los productos, preparar las ofertas, presentarlas y organizar reuniones para realizar el cierre de las ventas. La gamificación introduce ciertos criterios de variabilidad en el éxito de las tareas o en su duración, así como en el establecimiento de los grados de propensión a la compra de los clientes potenciales, tal y como ocurre en la vida real. El reto es conseguir los objetivos de venta marcados en los plazos de tiempo fijados para ello.' | translate }}</p>
+              <p innerHtml="{{ 'Las reglas de Sales Cyclum establecen una duración media en la realización de las tareas por tipo de actividad. Esta duración a veces está sujeta a variaciones, por ejemplo, en los casos del tiempo dedicado a la realización de reuniones con clientes. También permite al alumno ejecutar tareas con mayor o menor grado de dedicación o secuenciarlas con distintos criterios, dependiendo de su estrategia de ventas. El adecuado control del tiempo es fundamental para conseguir los objetivos marcados. Se puede jugar individualmente o en grupo y el juego ofrece una amplia información gráfica en tiempo real del nivel de eficiencia, el grado de cumplimiento de objetivos, la tasa de conversión o el porcentaje del tiempo consumido. La simulación está disponible para cualquier usuario u organizaciones, incluyendo empresas, centros de formación y escuelas de negocio.' | translate }}">
+                
+              </p>
+              <h3>{{ 'Módulo de administración para formadores' | translate }}</h3>
+              <h4 style="text-transform: none;">{{ 'Permite variar el grado de dificultad y registra los resultados individuales de los jugadores.' | translate }}</h4>
+              <p>
+                  {{ 'Sales Cyclum dispone de un módulo de administración especialmente diseñado para ofrecer funcionalidad específica de valor añadido para formadores. En particular, el administrador podrá modificar el contenido de los parámetros que impactan en el comportamiento del juego para su grupo de alumnos:' | translate }}
+              </p>
+                <ul class="col-md-12">
+                  <li>{{ 'Número de oportunidades generadas por la opción de añadir grupo de oportunidades' | translate }}</li>
+                  <li>{{ 'Número de contratos trimestrales necesarios para alcanzar los objetivos de ventas' | translate }}</li>
+                </ul>
+                <p>
+                    {{ 'Esta posibilidad ofrece al formador una herramienta ideal para variar la dificultad en el grado de consecución de los objetivos comerciales de los alumnos. Se recomienda invitar a los alumnos a realizar diferentes ejecuciones del juego, incrementando la dificultad y observar el impacto en las gráficas de nivel de conversión o en el nivel de eficiencia comercial. Los alumnos pueden competir por ser los mejores.' | translate }}
+              </p>
+              <p>
+                  {{ 'Los formadores también tienen acceso a los resultados finales de cada ejecución de cada uno de los jugadores de su grupo o instancia, por lo que Sales Cyclum puede ser utilizado como herramienta de evaluación on-line.' | translate }}
+              </p>
+              <h3>{{ 'Elementos de aprendizaje' | translate }}</h3>
+              <ul class="col-md-12">
+                <li>{{ 'El ciclo de venta' | translate }}</li>
+                <li>{{ 'La gestión del tiempo' | translate }}</li>
+                <li>{{ 'La eficiencia comercial' | translate }}</li>
+                <li>{{ 'Grados de propensión a la compra' | translate }}</li>
+                <li>{{ 'Clientes potenciales' | translate }}</li>
+                <li>{{ 'Preparación y realización de visitas comerciales' | translate }}</li>
+                <li>{{ 'Preparación y presentación de ofertas' | translate }}</li>
+                <li>{{ 'Cierre de contratos' | translate }}</li>
+                <li>{{ 'Negatividad' | translate }}</li>
+                <li>{{ 'Ratios y seguimiento' | translate }}</li>
+              </ul>
+              <h3>{{ 'Reglas de Juego' | translate }}</h3>
+              <p>
+                  {{ 'Podrá ver el detalle completo de las reglas de la simulación utilizando su Código de Acceso.' | translate }}
+              </p>
+              <br>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

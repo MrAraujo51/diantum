@@ -1,0 +1,23 @@
+@media (max-width: 767px) {
+    .text-responsive{font-size: 10px;}
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .text-responsive { font-size: 20px; }
+    .text-sm-responsive {font-size: 11px; }
+    .p-5-responsive { padding: 5px !important; }
+    .btn-sm { font-size: 13px !important; }
+    .m-t-5 { margin-top: 5px !important; }
+}
+
+.selected {
+    outline: #b9cfdf solid 1px;
+    cursor: pointer;
+}
+
+.lead-btn:hover {
+    outline: #788cb9 solid 1px;
+    cursor: pointer;
+}
+

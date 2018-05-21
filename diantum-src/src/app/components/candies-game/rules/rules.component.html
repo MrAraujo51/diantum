@@ -1,0 +1,173 @@
+<header class="center header-sm bg-dark" data-img="bg/smoke2.png">
+  <div class="container fade-text">
+    <h1 class="header-title text-center">{{ 'Juego de Bombones' | translate | uppercase }}</h1>
+    <p class="header-message text-center">{{ 'Reglas de Juego' | translate }}</p>
+  </div>
+</header>
+
+<section class="section-blog blog-single clearfix bg-gray-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="post">
+          <div class="post-text">
+            <h2 class="center">{{ 'Juego de Bombones' | translate }}</h2>
+            <div class="left">
+              <h3>{{ 'Simula las operaciones de compra-venta de un almacén' | translate }}</h3>
+              <p>
+                {{ 'En esta simulación, los alumnos desempeñan el papel de un distribuidor ubicado en el nodo intermedio de una cadena de suministro formada por el fabricante, el distribuidor y los puntos de venta. De esta forma, realizan operaciones con clientes, de los que reciben pedidos, y con proveedores, a los que envían sus pedidos de compra y de los que reciben productos.' | translate }}
+              </p>
+              <p>
+                {{ 'El objetivo es conseguir el mayor nivel de servicio posible con la mejor rentabilidad. Para ello se deben maximizar las ventas a los clientes, garantizando la disponibilidad de la menor cantidad posible de productos que sea suficiente para satisfacer su demanda, reduciendo así los costes operativos y consiguiendo la mayor rentabilidad. El juego ilustra la complejidad en la gestión de distintos conceptos existentes en la vida real dentro del mundo de las operaciones, como son la demanda, los inventarios, los plazos de entrega o los niveles de servicio.' | translate }}
+              </p>
+              <ul class="col-md-12">
+                <li innerHtml="{{ 'Denominamos Aguas arriba a los nodos de la red de suministro que se encuentran más cercanos a los procesos de fabricación de los productos.' | translate }}"></li>
+                <li innerHtml="{{ 'Denominamos Aguas abajo a los nodos de la red de suministro que se encuentran más cercanos al origen de la demanda o consumidores finales.' | translate }}"></li>
+              </ul>
+              <h3>{{ 'Duración y dinámica del juego' | translate }}</h3>
+              <p>
+                {{ 'El juego transcurre durante 40 periodos de tiempo, que típicamente podrían representar días o semanas. En cada periodo, el jugador contará con un determinado nivel de inventario y recibirá un valor aleatorio que representa la demanda agregada de sus clientes en ese periodo. En base al nivel de inventario disponible y a la demanda de productos recibida de "aguas abajo", el jugador debe decidir qué cantidad de productos pedir a sus proveedores, "aguas arriba", teniendo en cuenta el plazo de entrega que tienen los mismos. El pedido realizado en cada periodo a los proveedores será recibido una vez transcurrido el plazo de entrega correspondiente que aparece en lista de parámetros de la gamificación.' | translate }}
+              </p>
+              <p>
+                {{ 'El usuario tiene acceso a todas las variables operativas a través de un segmento de la pantalla denominado panel de control. El plazo de entrega y el nivel inicial de inventario son dos de las variables que pueden ser modificadas por el instructor o administrador del juego.' | translate }}
+              </p>
+              <p>
+                {{ 'Por otro lado, el jugador tendrá disponible en cada momento una vista de los próximos 20 periodos de tiempo, en los que podrá ver los productos pendientes de recibir de los proveedores, denominados productos "en camino" o pendientes de recibir. En el periodo en el que los productos llegan al almacén, desaparecen de la fila "en camino" y se añaden al inventario existente. Esta es otra variable que debe ser tenida en cuenta a la hora de realizar los pedidos en cada periodo.' | translate }}
+              </p>
+              <h3>{{ 'Los ingresos y los distintos tipos de costes' | translate }}</h3>
+              <p>
+                {{ 'Al final de cada periodo se realiza el cálculo de los ingresos por ventas y los costes asociados a la operación. Ambas cantidades nos permitirán calcular la rentabilidad de las operaciones en cada periodo y acumular los importes para calcular la rentabilidad acumulada de la actividad del distribuidor. Maximizar los ingresos y reducir los costes es el reto del juego, desde el punto de vista de rentabilidad.' | translate }}
+              </p>
+              <p>
+                {{ 'Los ingresos unitarios por ventas y los distintos tipos de coste unitarios son parámetros variables que pueden ser definidos por el administrador del juego y aparece en el panel de control del jugador. El detalle de los mismos es el siguiente:' | translate }}
+              </p>
+              <ul class="col-md-12 fa-ul">
+                <li>
+                  <i class="fa-li fa fa-check-square"></i>{{ 'Por cada unidad vendida se registran unos ingresos por ventas, utilizando el valor del precio unitario de venta.' | translate }}</li>
+                <li>
+                  <i class="fa-li fa fa-check-square"></i>{{ 'Por cada unidad pedida a proveedores se registran un coste de compra de producto, utilizando el valor del coste unitario de compra.' | translate }}</li>
+                <li>
+                  <i class="fa-li fa fa-check-square"></i>{{ 'Por cada unidad de demanda no satisfecha en un periodo por falta de inventario, se registra un coste de oportunidad, utilizando el valor del coste unitario de oportunidad.' | translate }}</li>
+                <li>
+                  <i class="fa-li fa fa-check-square"></i>{{ 'Por cada unidad de exceso de productos en el inventario, se registra un coste de disposición de inventario, utilizando el valor del coste unitario de disposición de inventario.' | translate }}</li>
+              </ul>
+              <h3>{{ 'Panel de Control' | translate }}</h3>
+              <p>
+                {{ 'El juego proporciona un panel de control en el que se ofrece toda la información relevante durante la simulación. El panel de control está dividido en cuatro bloques:' | translate }}
+              </p>
+              <ol class="col-md-12">
+                <li>
+                  {{ 'El primero por la izquierda muestra el icono del juego y los botones de' | translate }}
+                  <b>{{ 'Iniciar y Finalizar' | translate }}</b> {{ 'la simulación. El juego está programado para realizar cuarenta periodos ininterrumpidos en los que se recibe una demanda y se toma la decisión de la cantidad a pedir.' | translate }}
+                  <ul class="fa-ul">
+                    <li>
+                      <i class="fa-li fa fa-check"></i> {{ 'El botón' | translate }}
+                      <b>{{ 'Iniciar Simulación' | translate }}</b>{{ 'es el que permite arrancar el proceso y empezar la simulación desde el primer periodo.' | translate }}
+                    </li>
+                    <li>
+                      <i class="fa-li fa fa-check"></i> {{ 'El botón' | translate }}
+                      <b>{{ 'Finalizar' | translate }}</b> {{ 'permite una salida anticipada de la simulación, pero hay que tener en cuenta que el resultado de todas las ejecuciones de la simulación, incluso las terminadas anticipadamente, queda registrado con todos los datos de uso, para facilitar la recopilación de resultados cuando se trata de cursos, por lo que no se recomienda usar esta opción en caso de pruebas académicas sin consultar con su instructor o el administrador de la instancia.' | translate }}
+                    </li>
+                  </ul>
+                </li>
+                <li>{{ 'El segundo bloque por la izquierda,' | translate }}
+                  <b>{{ 'PERIODO' | translate }}</b>{{ ', muestra el periodo en el que se encuentra la simulación y los valores en el periodo de la nueva demanda generada y el inventario disponible. La diferencia entre este valor de la demanda y el mostrado en la primera fila de la tabla que incluye la visualización de 20 periodos, es que este último incluye toda la demanda acumulada pendiente de entregar incluida la del último periodo, mientras que el valor mostrado en el panel de control solo incluye la demanda nueva del periodo.' | translate }}</li>
+                <li>{{ 'En el tercer bloque por la izquierda,' | translate }}
+                  <b>{{ 'PEDIDOS' | translate }}</b>{{ ', el usuario introduce periodo a periodo sus pedidos "aguas arriba".' | translate }}
+                  <ul class="fa-ul">
+                    <li>
+                      <i class="fa-li fa fa-check"></i>{{ 'El campo numérico encima del botón Pedir permite introducir en cada periodo el valor de la cantidad a pedir. Este valor puede oscilar entre 0 y 10 unidades.' | translate }}</li>
+                  </ul>
+                </li>
+                <li>{{ 'El bloque final muestra dos botones para ver los gráficos de nivel de servicio y rentabilidad, así como un bloque desplegable con las variables operativas del juego. Estas variables tienen unos valores por defecto, que pueden ser modificados por el formador o administrador de la instancia de gamificación.' | translate }}
+                </li>
+
+                <div class="col-md-6 col-md-offset-2">
+                  <div class="row">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr class="default">
+                          <td class="text-left">
+                            {{ 'Variable' | translate }}
+                          </td>
+                          <td class="text-center">
+                            {{ 'Valor por defecto' | translate }}
+                          </td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="primary">
+                          <td class="text-left">
+                            {{ 'Plazo de entrega' | translate }}
+                          </td>
+                          <td class="text-center">
+                            3
+                          </td>
+                        </tr>
+                        <tr class="primary">
+                          <td class="text-left">
+                            {{ 'Intervalo de variabilidad de la demanda' | translate }}
+                          </td>
+                          <td class="text-center">
+                            0-10
+                          </td>
+                        </tr>
+                        <tr class="primary">
+                          <td class="text-left">
+                            {{ 'Nivel de inventario inicial' | translate }}
+                          </td>
+                          <td class="text-center">
+                            5
+                          </td>
+                        </tr>
+                        <tr class="danger">
+                          <td class="text-left">
+                            {{ 'Coste unitario de inventario' | translate }}
+                          </td>
+                          <td class="text-center">
+                            1
+                          </td>
+                        </tr>
+                        <tr class="danger">
+                          <td class="text-left">
+                            {{ 'Coste unitario de oportunidad' | translate }}
+                          </td>
+                          <td class="text-center">
+                            1,5
+                          </td>
+                        </tr>
+                        <tr class="danger">
+                          <td class="text-left">
+                            {{ 'Coste unitario de compra' | translate }}
+                          </td>
+                          <td class="text-center">
+                            1
+                          </td>
+                        </tr>
+                        <tr class="success">
+                          <td class="text-left">
+                            {{ 'Precio unitario venta' | translate }}
+                          </td>
+                          <td class="text-center">
+                            5
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <p>
+                    {{ 'Hay que tener en cuenta que el perfil de instructor o administrador de la instancia tiene acceso a modificar los valores de estos parámetros, lo que permite cambiar el nivel de dificultad para conseguir el mejor nivel de servicio y rentabilidad. Realizar diferentes ejecuciones de esta gamificación con diferentes parámetros es la mejor forma de experimentar los efectos de estos cambios. Este perfil de usuario tendrá acceso a los resultados finales de la ejecución de cada jugador de la instancia.' | translate }}
+                  </p>
+                  <p>
+                    {{ 'Durante todo el juego y al final de la ejecución del mismo, el usuario puede comprobar el nivel de servicio acumulado hasta el periodo en curso y su rentabilidad total acumulada hasta el periodo.' | translate }}
+                </div>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

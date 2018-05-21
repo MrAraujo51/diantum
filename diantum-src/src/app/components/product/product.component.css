@@ -1,0 +1,11 @@
+.section-ecommerce {
+    padding-top: 60px;
+}
+
+.display-flex {
+    display: flex;
+}
+
+.border-top {
+    border-top: 1px solid #efefef!important;
+}

@@ -1,0 +1,300 @@
+<section id="main" class="wrapper">
+    <div class="container">
+      <div id="centrado">
+        <h2>Panel de Control - Juego de Bombones</h2>
+      </div>
+      <div class="row">
+  
+        <div class="3u 12u$(xsmall)">
+          <div class="row">
+            <ul class="actions vertical">
+              <li><span class="image fit"><img src="../../../assets/images/candies-169.png" alt="" /></span></li>
+              <li><input    type="submit" 
+                            value="Iniciar Simulación" 
+                            class="button specialgreen small fit" 
+                            (click)="startSimulation()"
+                            [disabled]="initGame" /></li>
+              <li><input type="submit" 
+                         value="Finalizar" 
+                         class="button special small fit" 
+                         (click)="finalizeSimulation()" 
+                         [disabled]="!initGame"
+                /></li>
+              <li><a class="button small fit" (click)="open(content)">Cambiar Valores</a></li>
+            </ul>
+          </div>
+        </div>
+  
+  
+  
+  
+        <div class="3u 12u$(xsmall)">
+          <div class="row">
+            <span class="image-fit"><img src="../../../assets/images/Calendar_red.png" alt="" /></span>
+  
+            <div id="periodo_i">
+              <h5>PERIODO: {{periodo + 1}}
+              </h5>
+            </div>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Demanda</td>
+                  <td id="demanda_i" *ngIf="initGame">{{randomDemand}}</td>
+                  <td *ngIf="!initGame"></td>
+                </tr>
+                <tr>
+                  <td>Inventario</td>
+                  <td id="inventario_i" *ngIf="initGame">{{inventario}}</td>
+                  <td *ngIf="!initGame"></td>
+                </tr>
+                <tr>
+                  <td>Plazo de entrega</td>
+                  <td id="plazo_entrega_i">{{product?.plazoEntrega}}</td>
+                </tr>
+                <tr>
+                  <td>Variabilidad demanda</td>
+                  <td id="plazo_entrega_i">{{product?.variabilidad?.start}}-{{product?.variabilidad?.end}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+  
+        <div class="3u 12u$(xsmall)">
+          <h5>PEDIDOS </h5>
+          <form id="formpedido">
+            <div class="row uniform 50%">
+              <div class="12u$">
+                <input type="number" name="pedido" [(ngModel)]="pedido" min="0" max="15"
+                  value="0" placeholder="" />
+              </div>
+  
+              <div class="12u$">
+                <ul class="actions">
+                  <li><input type="submit" value="Pedir" class="button special small" [disabled]="!initGame" (click)="pedir()"/></li>
+                  <li><input type="reset" value="Borrar" class="button small" [disabled]="!initGame" /></li>
+                </ul>
+              </div>
+            </div>
+          </form>
+          <div class="12u$">
+            <ul class="actions vertical">
+              <li><a  fragment="serviceLevel" class="button alt small fit">Nivel Servicio</a>
+              </li>
+              <li><a fragment="rentabillity" class="button alt small fit">Rentabilidad</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="3u$ 12u$(xsmall)">
+  
+  
+          <h5>ESTADO DE VARIABLES:
+          </h5>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Nivel inicial inventario</td>
+                  <td id="inventario_inic_i">{{product?.inventarioInicial}}</td>
+                </tr>
+                <tr>
+                  <td>Coste Unitario Inventario</td>
+                  <td id="ICC_i">{{product?.costeUnitario?.inventario}}</td>
+                </tr>
+                <tr>
+                  <td>Coste Unitario Oportunidad</td>
+                  <td id="COP_i">{{product?.costeUnitario?.oportunidad}}</td>
+                </tr>
+                <tr>
+                  <td>Coste Unitario Compra</td>
+                  <td id="CCO_i">{{product?.costeUnitario?.compra}}</td>
+                </tr>
+                <tr>
+                  <td>Precio Unitario Venta</td>
+                  <td id="PVT_i">{{product?.costeUnitario?.venta}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+  
+  
+      <!-- Table de Pedidos -->
+      <div id="centrado">
+        <h3>Periodos</h3>
+      </div>
+      <div class="table-wrapper table-name">
+        <table class="alt">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Demanda</b></td>
+            </tr>
+            <tr>
+              <td><b>Inventario</b></td>
+            </tr>
+            <tr>
+              <td><b>En camino</b></td>
+            </tr>
+            <tr>
+              <td><b>Pedidos</b></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrapper table-values">
+        <table class="alt">
+          <thead>
+            <tr>
+              <ng-container *ngFor="let item of header; let i = index">
+                <th  scope="col" *ngIf="i >= start">{{item}}</th>
+              </ng-container>
+              
+  
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of data">
+              <ng-container *ngFor="let value of item; let i = index">
+                <td  *ngIf="i >= start">{{value}}</td>
+              </ng-container>
+            </tr>
+  
+          </tbody>
+        </table>
+  
+      </div>
+  
+      <div id="centrado">
+        <h3>Gráfico Nivel de Servicio</h3>
+        <div *ngIf="serviceLevelChartData.length">
+          <canvas #serviceLevel="base-chart" baseChart
+                  [data]="serviceLevelChartData"
+                  [labels]="lineChartLabels"
+                  [options]="lineChartOptions"
+                  [legend]="false"
+                  [chartType]="lineChartType"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas>
+        </div>
+      </div>
+      <div id="centrado">
+        <h3>Gráfico Rentabilidad</h3>
+        <div *ngIf="rentabillityChartData.length">
+          <canvas #rentabillity="base-chart" baseChart
+                  [data]="rentabillityChartData"
+                  [labels]="lineChartLabels"
+                  [options]="lineChartOptions"
+                  [legend]="false"
+                  [chartType]="lineChartType"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas>
+        </div>
+      </div>
+    </div>
+    <ng-template #content let-c="close" let-d="dismiss">
+  
+      <div class="modal-header">
+        <h4 class="modal-title">Cambiar Valores</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+  
+      <div class="modal-body">
+        <form class="form-horizontal" [formGroup]="rForm" (submit)="changeValues()">
+          <div class="form-group">
+            <label for="deliveryTerm" class="col-sm-6">Plazo de entrega:</label>
+            <div class="col-sm-4">
+              <input type="number" class="form-control" formControlName="deliveryTerm" name="deliveryTerm" id="input">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="col-sm-12">Variabilidad de demanda: </label>
+            <div class="form-group">
+              <label for="" class="col-sm-2 control-label">Min:</label>
+              <input 
+              type="number" 
+              class=" col-sm-2 form-control"
+              formControlName="demandVariabilityStart" 
+              name="demandVariabilityStart">
+              <label for="" class="col-sm-2 control-label">Max:</label>
+              <input 
+              type="number" 
+              class=" col-sm-2 form-control"
+              formControlName="demandVariabilityEnd" 
+              name="demandVariabilityEnd">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="col-sm-6">Nivel Inicial de Invetntario:</label>
+            <div class="col-sm-4">
+              <input 
+              type="number" 
+              class="form-control"
+              formControlName="initIventory" 
+              name="initIventory">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="col-sm-6">Coste Unitario de Inventario:</label>
+            <div class="col-sm-4">
+              <input 
+              type="number" 
+              class="form-control"
+              formControlName="unitCostInventory" 
+              name="unitCostInventory">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="col-sm-6">Coste Unitario de Oportunidad:</label>
+            <div class="col-sm-4">
+              <input 
+              type="number" 
+              class="form-control"
+              formControlName="unitCostOpportunity" 
+              name="unitCostOpportunity">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="col-sm-6">Coste Unitario de Compra:</label>
+            <div class="col-sm-4">
+              <input 
+              type="number" 
+              class="form-control"
+              formControlName="unitCostPurchase" 
+              name="unitCostPurchase">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="col-sm-6">Coste Unitario de Venta:</label>
+            <div class="col-sm-4">
+              <input 
+              type="number" 
+              class="form-control"
+              formControlName="unitCostSelling" 
+              name="unitCostSelling">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button specialgreen small" [disabled]="!rForm.valid" (click)="changeValues()">Save</button>
+        <button type="button" class="button small" (click)="c('Close click')">Close</button>
+      </div>
+    </ng-template>
+  </section>
+  

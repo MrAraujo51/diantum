@@ -1,0 +1,297 @@
+<section class="section-ecommerce">
+  <aside id="aside" style="background: #788cb9;">
+    <div class="sidebar-inner">
+      <div class="categories">
+        <div class="breadcrumbs clearfix">
+          <a [routerLink]="['home']" class="home"><i class="line-icon-home"></i></a>
+          <a href="#" class="nolink">{{ 'Productos' | translate }}</a>
+          <a href="#" class="nolink">{{ 'Formación' | translate }}</a>
+        </div>
+        <div class="panel-group panel-accordion" id="accordion">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                  {{ 'Características Principales' | translate }}
+                </a>
+              </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse">
+              <div class="panel-body c-white">
+                <ul>
+                  <li>{{ 'Uso individual o para grupos' | translate }}</li>
+                  <li>{{ 'Funcionalidad específica para instructores' | translate }}</li>
+                  <li>{{ 'Variabilidad de parámetros' | translate }}</li>
+                  <li>{{ 'Panel de control' | translate }}</li>
+                  <li>{{ 'Gráficos de rendimiento en tiempo real' | translate }}</li>
+                  <li>{{ 'Diferentes elementos de aprendizaje' | translate }}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                    {{ 'Mecánicas de gamificación' | translate }}
+                </a>
+              </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+              <div class="panel-body c-white">
+                <ul>
+                  <li>{{ 'Registro de ejecuciones' | translate }}</li>
+                  <li>{{ 'Resultados individuales' | translate }}</li>
+                  <li>{{ 'Control y efectos de la variabilidad' | translate }}</li>
+                  <li>{{ 'Competiciones y premios' | translate }}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                    {{ 'Consiga su acceso' | translate }}
+                </a>
+              </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+              <div class="panel-body c-white">
+                <ul>
+                  <li>{{ 'Por número de usuarios' | translate }}</li>
+                  <li>{{ 'Por número de días' | translate }}</li>
+                  <li>{{ 'En cualquier zona horaria' | translate }}</li>
+                  <li>{{ 'Activación inmediata' | translate }}</li>
+                  <li>{{ 'Pago por uso' | translate }}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="items clearfix">
+    <header class="collection-header clearfix">
+      <h2>{{ 'Formación Avanzada' | translate }}</h2>
+      <p class="items-results">{{ '2 Elementos' | translate }}</p>
+    </header>
+    <div class="features_items">
+      <div class="border-top display-flex">
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="product-image-wrapper">
+            <div class="single-product text-center">
+              <div class="product-img">
+                <a [routerLink]="['/candies-game']" >
+                <img src="assets/images/gallery/candiesgame3Dzoom.jpg" alt="candies game 3D logo">
+                <div class="product-img-hover">
+                  <img src="assets/images/gallery/candies-game-07.jpg" alt="candies-game-07">
+                </div>
+              </a>
+                <div class="product-overlay">
+                  <div class="overlay-content">
+                    <div class="row">
+                      <div class="col-md-12 product-wishlist">
+                        <i class="line-icon-equalizer"></i>
+                        <p>{{ 'Operaciones' | translate }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p>{{ 'Juego de Bombones' | translate }}</p>
+              <div class="row">
+                <div class="col-md-6">
+                  <a [routerLink]="['/candies-game']" class="add-to-cart pull-right">{{ 'Detalles' | translate }}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="panel-group panel-accordion" id="accordion1">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4>
+                  <a data-toggle="collapse" data-parent="#accordion1" href="#collapse1-1">
+                      {{ 'Características Principales' | translate }}
+              </a>
+                </h4>
+              </div>
+              <div id="collapse1-1" class="panel-collapse collapse show">
+                <div class="panel-body">
+                  <p> {{ 'El juego ilustra la complejidad del proceso de toma de decisiones en la gestión de un negocio que, como parte de una cadena de suministro, intenta ofrecer el mayor nivel de servicio a sus clientes incurriendo en los menores costes de operación posibles.' | translate }}
+                  </p>
+                  <div class="item-actions col-sm-6">
+                    <a *ngIf="translate.currentLang === 'es'" href="http://www.diantum.com/index.php/es/shop-es/categories-2/product/juego-bombones" target="_blank" class="btn btn-dark btn-animated"><i class="line-icon-basket"></i>{{ 'Consiga su acceso' | translate }}</a>
+                    <a *ngIf="translate.currentLang === 'en'" href="http://www.diantum.com/index.php/en/shop-en/categories-3/product/candies-game" target="_blank" class="btn btn-dark btn-animated"><i class="line-icon-basket"></i>{{ 'Consiga su acceso' | translate }}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4>
+                  <a data-toggle="collapse" data-parent="#accordion1" href="#collapse1-2">
+                      {{ 'Elementos de aprendizaje' | translate }}
+                </a>
+                </h4>
+              </div>
+              <div id="collapse1-2" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <ul class="list-unstyled">
+                    <li>{{ 'Demanda' | translate }}</li>
+                    <li>{{ 'Rentabilidad' | translate }}</li>
+                    <li>{{ 'Nivel de servicio' | translate }}</li>
+                    <li>{{ 'Control de inventarios' | translate }}</li>
+                    <li>{{ 'Costes de inventario, oportunidad y pedido' | translate }}</li>
+                    <li>{{ 'La visibilidad de la cadena de suministro' | translate }}</li>
+                    <li>{{ 'Plazos de entrega' | translate }}</li>
+                    <li>{{ 'Efectos de la variabilidad en los procesos' | translate }}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4>
+                  <a data-toggle="collapse" data-parent="#accordion1" href="#collapse1-3">
+                      {{ 'Mecánica de gamificación' | translate }}
+                </a>
+                </h4>
+              </div>
+              <div id="collapse1-3" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <ul class="list-unstyled">
+                    <li>{{ 'Reto: conseguir el máximo nivel de servicio con la mejor rentabilidad posible' | translate }}</li>
+                    <li>{{ '40 periodos' | translate }}</li>
+                    <li>{{ 'Panel de control' | translate }}</li>
+                    <li>{{ 'Demanda aleatoria por periodo' | translate }}</li>
+                    <li>{{ 'Umbrales de variabilidad parametrizables' | translate }}</li>
+                    <li>{{ 'Control de costes e ingresos' | translate }}</li>
+                    <li>{{ 'Registro de ejecuciones' | translate }}</li>
+                    <li>{{ 'Compite con el resto de participantes' | translate }}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-top display-flex">
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="product-image-wrapper">
+            <div class="single-product text-center">
+              <div class="product-img">
+                <a [routerLink]="['/sales-cyclum']">
+                <img src="assets/images/gallery/salescyclum3Dzoom.jpg" alt="sales cyclum 3D logo">
+                <div class="product-img-hover">
+                  <img src="assets/images/gallery/sales-cyclum-07.jpg" alt="sales-cyclum-07">
+                </div>
+              </a>
+                <div class="product-overlay">
+                  <div class="overlay-content">
+                    <div class="row">
+                      <div class="col-md-12 product-wishlist">
+                        <i class="line-icon-target"></i>
+                        <p>{{ 'Gestión Comercial' | translate }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p>{{ 'Actividad Comercial' | translate }}</p>
+              <div class="row">
+                <div class="col-md-6">
+                  <a [routerLink]="['/sales-cyclum']"  class="add-to-cart pull-right">{{ 'Detalles' | translate }}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="panel-group panel-accordion" id="accordion2">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4>
+                  <a data-toggle="collapse" data-parent="#accordion2" href="#collapse2-1">
+                      {{ 'Características Principales' | translate }}
+              </a>
+                </h4>
+              </div>
+              <div id="collapse2-1" class="panel-collapse collapse show">
+                <div class="panel-body">
+                  <p>{{ 'El juego ilustra la importancia de la adecuada gestión del tiempo en cada fase de la actividad comercial, dentro del ciclo de venta: desde que se identifica una oportunidad de venta o cliente potencial, pasando por los distintos procesos comerciales hasta que se produce el cierre de la venta. El objetivo es alcanzar los objetivos de ventas con la mejor eficiencia comercial.' | translate }}
+                  </p>
+                  <div class="item-actions col-sm-6">
+                    <a *ngIf="translate.currentLang === 'es'" href="http://www.diantum.com/index.php/es/shop-es/categories-2/product/sales-cyclum-es" target="_blank" class="btn btn-dark btn-animated"><i class="line-icon-basket"></i>{{ 'Consiga su acceso' | translate }}</a>
+                    <a *ngIf="translate.currentLang === 'en'" href="http://www.diantum.com/index.php/en/shop-en/categories-3/product/sales-cyclum" target="_blank" class="btn btn-dark btn-animated"><i class="line-icon-basket"></i>{{ 'Consiga su acceso' | translate }}</a>                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4>
+                  <a data-toggle="collapse" data-parent="#accordion2" href="#collapse2-2">
+                {{ 'Elementos de aprendizaje' | translate }}
+                </a>
+                </h4>
+              </div>
+              <div id="collapse2-2" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <ul class="list-unstyled">
+                    <li>{{ 'El ciclo de venta' | translate }}</li>
+                    <li>{{ 'La gestión del tiempo' | translate }}</li>
+                    <li>{{ 'La eficiencia comercial' | translate }}</li>
+                    <li>{{ 'Contactos' | translate }}</li>
+                    <li>{{ 'Clientes potenciales y referencias' | translate }}</li>
+                    <li>{{ 'Visitas comerciales' | translate }}</li>
+                    <li>{{ 'Presentación de ofertas' | translate }}</li>
+                    <li>{{ 'Cierre de la venta' | translate }}</li>
+                    <li>{{ 'Ratios y seguimiento' | translate }}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4>
+                  <a data-toggle="collapse" data-parent="#accordion2" href="#collapse2-3">
+                      {{ 'Mecánica de gamificación' | translate }}
+                </a>
+                </h4>
+              </div>
+              <div id="collapse2-3" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <ul class="list-unstyled">
+                    <li>{{ 'Reto: conseguir los objetivos de venta con la mejor eficiencia comercial' | translate }}</li>
+                    <li>{{ 'Variabilidad en los procesos' | translate }}</li>
+                    <li>{{ 'Panel de control' | translate }}</li>
+                    <li>{{ 'Umbrales de variabilidad parametrizables' | translate }}</li>
+                    <li>{{ 'Control del tiempo' | translate }}</li>
+                    <li>{{ 'Registro de ejecuciones' | translate }}</li>
+                    <li>{{ 'Compite con el resto de participantes' | translate }}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pagination">
+        <ul>
+          <li class="prev"><a href=""><i class="fa fa-angle-left"></i></a></li>
+          <li class="active"><a href="">1</a></li>
+          <li class="next"><a href=""><i class="fa fa-angle-right"></i></a></li>
+        </ul>
+      </div>
+    </div>
+    <!--features_items-->
+  </div>
+</section>

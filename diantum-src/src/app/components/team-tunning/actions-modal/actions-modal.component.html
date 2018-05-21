@@ -1,0 +1,33 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ 'Acciones' | translate }}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="panel-group panel-accordion dark-accordion" id="accordion2">
+    <div class="panel panel-default" *ngFor="let key of objectKeys(gameParams.actions); let i = index">
+      <div class="panel-heading">
+        <h4>
+          <a class="collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapse{{ i }}">
+            {{ gameParams.actions[key].name }}
+          </a>
+        </h4>
+      </div>
+      <div id="collapse{{ i }}" class="panel-collapse collapse">
+        <div class="panel-body">
+          <label class="container" *ngFor="let action of objectKeys(gameParams.actions[key].act)">
+            {{ gameParams.actions[key].act[action].name }}
+            <input type="checkbox" (change)="markAction(gameParams.actions[key].act[action], gameParams.actions[key].name, $event)">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close()">{{ 'Cerrar' | translate }}</button>
+  <button type="submit" class="btn btn-primary col-md-6" (click)="save()">Realizar acciones</button>
+</div>

@@ -1,0 +1,15 @@
+/*------------------------------------------------------------------------------------*/
+/*------------------------------  YOUR CUSTOM CSS STYLE  -----------------------------*/
+/* Modified by Diantum 2017/08/02 to adapt to specific company requirements ----------*/
+
+.well-come-dnt{position:relative;font-size:40px;line-height:62px;margin-bottom:48px;color:#fff!important;font-weight:450;letter-spacing: 2px; text-transform:uppercase}
+.intro-message-dnt{font-size:20px;line-height:1.4;margin-bottom:48px;margin-top:30px; color:rgba(185,207,223,0.9); font-family: "Open sans",arial;letter-spacing: 2px;}
+
+.section-title-dnt{color: rgb(120, 140, 185); background-color: rgba(0, 0, 0, 0); font-family: "Raleway", arial;}
+.section-services-dnt{color: rgb(120, 140, 185); background-color: rgba(0, 0, 0, 0); font-family: "Raleway", arial; font-size: 26px; font-weight:600; text-transform:uppercase;}
+.text-azul-dnt{color: rgb(120, 140, 185); background-color: rgba(0, 0, 0, 0);}
+.blockquote-author-dnt {font-size: 14px;color: #788cb9;}
+.blockquote-dnt{line-height: 26px;font-size: 18px;font-weight: 300;margin: 1;font-family: "Roboto", arial; border-left-style: solid; border-left-color: #788cb9;}
+.forgot-password-dnt{margin-top: 15px;color:#319db5;display: inline-block;}
+.no-background{background-color: transparent !important}
+.color-white{color: white !important}

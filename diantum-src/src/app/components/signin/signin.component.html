@@ -1,0 +1,71 @@
+
+
+<!-- Begin Top Image -->
+<header class="center header-md bg-dark parallax" style="background-image: url('assets/images/bg/bg-8-trans.png'); background-position: 50% 0px;">
+  <div class="container">
+    <div class="top-text f-left fade-text">
+      <h1 class="header-title text-left">{{ 'Login' | translate }}</h1>
+      <p class="header-message text-left">{{ 'Accede a los servicios de gamificacion de la plataforma' | translate }}</p>
+    </div>
+    <div class="breadcrumb">
+      <a [routerLink]="['/home']">Home</a>
+      <span>{{ 'Login' | translate }}</span>
+    </div>
+  </div>
+</header>
+<!-- End Top Image -->
+
+
+<!--  End Topbar simple -->
+<!-- Begin User Login -->
+<section class="section-account container">
+  <div class="row">
+    <div class="col-sm-6">
+      <h2 class="text-center strong">{{ 'Acceso' | translate }}</h2>
+      <form [formGroup]="rForm" (submit)="onSignInSubmit()" class="form-validation">
+        <div class="form-group">
+          <label class="control-label">{{ 'Nombre de usuario' | translate }}</label>
+          <div class="append-icon"><i class="line-icon-user"></i>
+            <input  type="text" 
+                    formControlName="username" 
+                    name="username" 
+                    class="form-control form-white placeholder" 
+                    required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label">{{ 'Password' | translate }}</label>
+          <div class="append-icon">
+            <input  type="password" 
+                    formControlName="password" 
+                    name="password" 
+                    id="password" 
+                    class="form-control form-white" 
+                    required>
+            <i class="line-icon-lock"></i>
+          </div>
+          <p>
+            <a *ngIf="translate.currentLang === 'es'" href="http://www.diantum.com/index.php/es/otras-funciones?view=reset" target="_blank" class="forgot-password-dnt">{{ '¿Olvidó su contraseña?' | translate }}</a>
+            <a *ngIf="translate.currentLang === 'en'" href="http://www.diantum.com/index.php/en/otras-funciones?view=reset" target="_blank" class="forgot-password-dnt">{{ '¿Olvidó su contraseña?' | translate }}</a>            
+            <a *ngIf="translate.currentLang === 'es'" href="http://www.diantum.com/index.php/es/otras-funciones?view=remind" target="_blank" class="forgot-password-dnt">{{ '¿Olvidó su nombre de usuario?' | translate }}</a>
+            <a *ngIf="translate.currentLang === 'en'" href="http://www.diantum.com/index.php/en/otras-funciones?view=remind" target="_blank" class="forgot-password-dnt">{{ '¿Olvidó su nombre de usuario?' | translate }}</a>            
+          </p>
+        </div>
+        <div class="text-center m-t-20">
+          <button type="submit" class="btn btn-animated btn-primary btn-login" [disabled]="!rForm.valid">{{ 'Acceder' | translate }}<i class="fa fa-chevron-right"></i></button>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-6">
+      <div class="create-account" style="background: #319db5;">
+        <h2 class="text-center c-white strong">{{ 'Crear una cuenta' | translate }}</h2>
+        <h3 class="c-white">{{ 'Disfrute de nuestros servicios de gamificación' | translate }}</h3>
+        <p class="c-white">{{ 'Seleccione su nombre de usuario e introduzca su cuenta de correo electrónico para acceder a la plataforma' | translate }}</p>
+        <div class="text-center m-t-40">
+          <a *ngIf="translate.currentLang === 'es'" href="http://www.diantum.com/index.php/es/registration" target="_blank" class="btn btn-rounded btn-white btn-signup hover-effect">{{ 'Crear una cuenta' | translate }}</a>
+          <a *ngIf="translate.currentLang === 'en'" href="http://www.diantum.com/index.php/en/registration" target="_blank" class="btn btn-rounded btn-white btn-signup hover-effect">{{ 'Crear una cuenta' | translate }}</a>          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

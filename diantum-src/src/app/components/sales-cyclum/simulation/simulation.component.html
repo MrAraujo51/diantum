@@ -1,0 +1,663 @@
+<header class="center header-sm bg-dark" data-img="bg/smoke2.png">
+  <div class="container fade-text">
+    <h1 class="header-title text-center"> {{ 'SALES CYCLUM' | translate }}</h1>
+    <p class="header-message text-center">{{ 'El ciclo de la actividad comercial para consiguir los objetivos de ventas con la mejor eficiencia' | translate }}</p>
+  </div>
+</header>
+<!-- End Header Image -->
+<!--  End Topbar simple -->
+<!-- Begin  Blog Single -->
+<section class="section-blog blog-single clearfix" style="background:#b9cfdf;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="post">
+          <!-- First segment. Start and end simulation -->
+          <div class="post-thumbnail">
+            <h2 class="center" style="color:#788cb9;">
+              <strong>{{ 'Panel de Control' | translate }}</strong>
+            </h2>
+          </div>
+          <div class="post-text">
+            <div class="post-meta">
+              {{ 'Botones de inicio y finalización de la gamificación. Se recomienda no finalizar la ejecución anticipadamente.' | translate
+              }}
+            </div>
+            <div class="post-content">
+              <div class="col-md-12 col-sm-12">
+
+                <div class="col-md-6 col-sm-6">
+                  <button type="button" class="btn btn-sm btn-block btn-success" (click)="startSimulation()" [disabled]="initGame">
+                    <i class="fa fa-play pull-left"></i>{{ 'Iniciar Simulación' | translate }}</button>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <button type="button" class="btn btn-sm btn-block btn-danger" (click)="finalizeSimulation()" [disabled]="!initGame">
+                    <i class="fa fa-list pull-left"></i>{{ 'Finalizar' | translate }}</button>
+                </div>
+                <div class="col-md-6 col-sm-6 col-md-offset-3" *ngIf="canPlay">
+                  <a [routerLink]="['/sales-cyclum/rules']" target="_blank">
+                    <button type="button" class="btn btn-sm btn-block btn-default">
+                      <i class="fa fa-list pull-left"></i>{{ 'Reglas de Juego' | translate }}</button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End first segment simulation -->
+
+          <div class="post-thumbnail">
+            <h3 class="center" style="color:#788cb9;">
+              <strong>{{ 'Actividad Comercial' | translate }}</strong>
+            </h3>
+          </div>
+
+          <div class="post-text">
+            <div class="post-content">
+              <div class="col-md-3 col-sm-3 border-right">
+                <div class="row">
+                  <div class="row">
+                    <div class="col-md-4 col-sm-4 col-md-offset-4 col-sm-offset-4">
+                      <img src="assets/images/game-icons/prospect-dnt-120.png" class="img-responsive " alt="prospect">
+                    </div>
+                  </div>
+                  <div class="center">
+                    <h3 class="text-responsive">{{ 'OPORTUNIDADES' | translate }}</h3>
+                  </div>
+                  <div class="center">
+                    <label>
+                      <h4 class="center ">{{ (oportunities$ | async)?.length }}</h4>
+                    </label>
+                  </div>
+                  <div class="col-md-12 col-sm-12">
+                    <div class="row">
+                      <p class="center text-sm-responsive">{{ 'Generar oportunidades' | translate }}</p>
+                      <div class="col-md-12 col-sm-12 p-5-responsive">
+                        <button type="button" (click)="createIndividual()" class="btn btn-sm btn-block btn-blue">
+                          <i class="fa fa-user pull-left"></i>{{ 'Individual' | translate }}</button>
+                      </div>
+                      <div class="col-md-12 col-sm-12 p-5-responsive">
+                        <button type="button" (click)="createGroup()" class="btn btn-sm btn-block btn-blue">
+                          <i class="fa fa-database pull-left"></i>{{ 'Grupo' | translate }}</button>
+                      </div>
+                      <p class="center text-sm-responsive">{{ 'Verificar propensión' | translate }}</p>
+                      <div class="col-md-12 m-b-10 col-sm-12 p-5-responsive">
+                        <button type="button" class="btn btn-sm btn-block btn-blue" (click)="verify()">
+                          <i class="fa fa-comments pull-left"></i>{{ 'Verificar' | translate }}</button>
+                      </div>
+                    </div>
+                    <!-- Lead elements -->
+                    <div class="row">
+                      <div *ngFor="let lead of oportunities$ | async; let idx = index" class="col-md-4 p-10 col-sm-4 p-5-responsive lead-btn" [ngClass]="{selected: selectedLeadOpor?.id == lead.id}"
+                        (click)="onSelectionOporChange(lead)">
+                        <img src="assets/images/game-icons/user-{{ lead.gender }}-{{ lead.status }}hover-72.png" class="img-responsive" alt="potential customer">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End of first block visits -->
+              <!-- Begin of second block Visits -->
+              <div class="col-md-3 col-sm-3 border-right">
+                <div class="row">
+                  <div class="row">
+                    <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
+                      <img src="assets/images/game-icons/visit2-dnt-120.png" class="img-responsive" alt="potential customer">
+                    </div>
+                  </div>
+                  <div class="center">
+                    <h3 class="text-responsive">{{ 'VISITAS' | translate }}</h3>
+                  </div>
+                  <div class="center">
+                    <label>
+                      <h4 class="center">{{ (visits$ | async)?.length }}</h4>
+                    </label>
+                  </div>
+                  <div class="col-md-12 col-sm-12">
+                    <p class="center text-sm-responsive">{{ 'Preparación de la visita' | translate }}</p>
+                    <div class="row">
+                      <div class="col-md-4 col-sm-4 p-5-responsive">
+                        <button type="button" (click)="preMin()" class="btn btn-sm btn-block btn-blue" placement="top" ngbTooltip="Minima">
+                          <i class="fa fa-circle-o-notch"></i>
+                        </button>
+                      </div>
+                      <div class="col-md-4 col-sm-4 p-5-responsive">
+                        <button type="button" (click)="preMed()" class="btn btn-sm btn-block btn-blue" placement="top" ngbTooltip="Estandar">
+                          <i class="fa fa-adjust"></i>
+                        </button>
+                      </div>
+                      <div class="col-md-4 col-sm-4 p-5-responsive">
+                        <button type="button" (click)="preMax()" class="btn btn-sm btn-block btn-blue" placement="top" ngbTooltip="Máxima">
+                          <i class="fa fa-circle"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <p class="center text-sm-responsive">{{ 'Realización de la visita' | translate }}</p>
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 p-5-responsive">
+                        <button type="button" (click)="toVisit()" class="btn btn-sm btn-block btn-blue">
+                          <i class="fa fa-building-o pull-left"></i>{{ 'Realizar la visita' | translate }}</button>
+                      </div>
+                    </div>
+                    <p class="center text-sm-responsive">{{ 'Duración de la visita' | translate }}</p>
+                    <div class="m-b-40">
+                      <ngb-progressbar type="danger" [value]="visitDuration"></ngb-progressbar>
+                    </div>
+                    <div class="row">
+                      <div *ngFor="let lead of visits$ | async; let idx = index" class="col-md-4 p-5 col-sm-4 p-5-responsive lead-btn" [ngClass]="{selected: selectedLeadVisi?.id == lead.id}"
+                        (click)="onSelectionVisitChange(lead)">
+                        <img src="assets/images/game-icons/{{ lead.gender }}-{{ lead.status }}-{{ lead.idImage }}.svg" class="img-responsive" alt="potential customer">
+                        <ngb-progressbar type="info" [value]="lead.preVisit"></ngb-progressbar>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End of seconf block Visits -->
+              <!-- Begind of third block Offers -->
+              <div class="col-md-3 col-sm-3 border-right">
+                <div class="row">
+                  <div class="row">
+                    <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
+                      <img src="assets/images/game-icons/offer-dnt-120.png" class="img-responsive " alt="prospect">
+                    </div>
+                  </div>
+                  <div class="center">
+                    <h3 class="text-responsive">{{ 'OFERTAS' | translate }}</h3>
+                  </div>
+                  <div class="center">
+                    <label>
+                      <h4 class="center">{{ (offers$ | async)?.length }}</h4>
+                    </label>
+                  </div>
+                  <div class="col-md-12 col-sm-12">
+                    <p class="center text-sm-responsive">{{ 'Elaboración de la oferta' | translate }}</p>
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 p-5-responsive">
+                        <button type="button" (click)="makeOffer()" class="btn btn-sm btn-block btn-blue">
+                          <i class="fa fa-file-text-o pull-left"></i>{{ 'Elaborar oferta' | translate }}</button>
+                      </div>
+                    </div>
+                    <p class="center text-sm-responsive">{{ 'Presentación de la oferta' | translate }}</p>
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 p-5-responsive">
+                        <button type="button" (click)="toOffer()" class="btn btn-sm btn-block btn-blue">
+                          <i class="fa fa-building-o pull-left"></i>{{ 'Presentar oferta' | translate }}</button>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <p class="center text-sm-responsive">{{ 'Duración de la presentación' | translate }}</p>
+                    </div>
+                    <div class="m-b-40">
+                      <ngb-progressbar type="danger" [value]="offerDuration"></ngb-progressbar>
+                    </div>
+                    <div class="row">
+                      <div *ngFor="let lead of offers$ | async; let idx = index" class="col-md-4 p-5 col-sm-4 p-5-responsive lead-btn" [ngClass]="{selected: selectedLeadOffe?.id == lead.id}"
+                        (click)="onSelectionOfferChange(lead)">
+                        <img src="assets/images/game-icons/{{ lead.gender }}-{{ lead.status }}-{{ lead.idImage }}.svg" class="img-responsive" alt="potential customer">
+                        <i *ngIf="!lead.preOffer" class="fa fa-square-o pull-center"></i>
+                        <i *ngIf="lead.preOffer" class="fa fa-check-square-o pull-center"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End of third block offers -->
+              <!-- Fourth block - contracts -->
+              <div class="col-md-3 col-sm-3">
+                <div class="row">
+                  <div class="row">
+                    <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
+                      <img src="assets/images/game-icons/contract-dnt-120.png" class="img-responsive " alt="prospect">
+                    </div>
+                  </div>
+                  <div class="center">
+                    <h3 class="text-responsive">{{ 'CONTRATOS' | translate }}</h3>
+                  </div>
+                  <div class="center">
+                    <label>
+                      <h4 class="center">{{ (contracts$ | async)?.length }}</h4>
+                    </label>
+                  </div>
+                  <div class="col-md-12 col-sm-12">
+                    <p class="center text-sm-responsive">{{ 'Reunión de cierre' | translate }}</p>
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 p-5-responsive">
+                        <button type="button" (click)="toReunion()" class="btn btn-sm btn-block btn-blue">
+                          <i class="fa fa-building-o pull-left"></i>{{ 'Realizar reunión' | translate }}</button>
+                      </div>
+                    </div>
+                    <p class="center text-sm-responsive">{{ 'Duración de la reunión' | translate }}</p>
+                    <div class="m-b-40">
+                      <ngb-progressbar type="danger" [value]="contractDuration"></ngb-progressbar>
+                    </div>
+                    <div class=" m-b-40">
+                      <div class="col-md-3 col-sm-3 p-5-responsive">
+                        <img src="assets/images/game-icons/contract-success-72.png" class="img-responsive " alt="prospect">
+                      </div>
+                      <div class="col-md-3 col-sm-3 p-5-responsive">
+                        <label>
+                          <h4 class="text-responsive">{{ contractGreen }}</h4>
+                        </label>
+                      </div>
+                      <div class="col-md-3 col-sm-3 p-5-responsive">
+                        <img src="assets/images/game-icons/contract-fail-72.png" class="img-responsive " alt="prospect">
+                      </div>
+                      <div class="col-md-3 col-sm-3 p-5-responsive">
+                        <label>
+                          <h4 class="text-responsive">{{ contractRed }}</h4>
+                        </label>
+                      </div>
+                    </div>
+                    <!-- Contract elements -->
+                    <div class="row">
+                      <div *ngFor="let lead of contracts$ | async; let idx = index" class="col-md-4 p-5 col-sm-4 p-5-responsive lead-btn" [ngClass]="{selected: selectedLeadCont?.id == lead.id}"
+                        (click)="onSelectionContractChange(lead)">
+
+                        <img src="assets/images/game-icons/{{ lead.gender }}-{{ lead.status }}-{{ lead.idImage }}.svg" class="img-responsive" alt="prospect">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End of fourth block -contracts -->
+            </div>
+          </div>
+
+          <!-- End of group one-Control Panel -->
+          <!-- Group Parameters and grphics links -->
+          <div class="post-thumbnail">
+            <h3 class="center" style="color:#788cb9;">
+              <strong>{{ 'Parámetros y gráficos' | translate }}</strong>
+            </h3>
+          </div>
+          <div class="post-text">
+            <div class="post-meta">
+              {{ 'Consulta de parámetros de ejecución.' | translate }}
+            </div>
+            <div class="post-content">
+              <div class="panel-group panel-accordion" id="accordion_candies">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <div class="center">
+                      <h3>{{ 'PARAMETROS' | translate }}</h3>
+                    </div>
+                    <h4>
+                      <a data-toggle="collapse" data-parent="#accordion1" href="#parameters-sales-activity">
+                        {{ 'Consultar Estado' | translate }}
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="parameters-sales-activity" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <table class="table table-striped f-12">
+                        <thead>
+                        </thead>
+                        <tbody>
+                          <tr class="primary">
+                            <td>{{ 'Número de oportinudades generadas por grupo' | translate }}</td>
+                            <td id="group_size_i">5</td>
+                          </tr>
+                          <tr class="primary">
+                            <td>{{ 'Objetivo de contratos realizados al trimestre' | translate }}</td>
+                            <td id="plazo_entrega_i">{{ params?.nObjective }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <br>
+                      <h4 class="center">
+                        <b>{{ 'Duración relativa de las actividades' | translate }}</b>
+                      </h4>
+                      <br>
+                      <div class="row">
+                        <div class="container col-md-6">
+                          <h4>
+                            <b>{{ 'Oportunidades' | translate }}</b>
+                          </h4>
+                          <p>{{ 'Generar oportunidad individual' | translate }}</p>
+                          <ngb-progressbar type="info" [value]="10"></ngb-progressbar>
+
+                          <p>{{ 'Generar oportunidad en grupo (tiempo por unidad)' | translate }}</p>
+                          <ngb-progressbar type="info" [value]="5"></ngb-progressbar>
+
+                          <p>{{ 'Verificar contacto comercial' | translate }}</p>
+                          <ngb-progressbar type="info" [value]="10"></ngb-progressbar>
+                          <h4>
+                            <b>{{ 'Visitas' | translate }}</b>
+                          </h4>
+                          <p>{{ 'Prepación de visita menos detallada' | translate }}</p>
+                          <ngb-progressbar type="info" [value]="10"></ngb-progressbar>
+
+                          <p>{{ 'Preparación vista normal' | translate }}</p>
+                          <ngb-progressbar type="info" [value]="40"></ngb-progressbar>
+
+                          <p>{{ 'Preparación visita mas detallada' | translate }}</p>
+                          <ngb-progressbar type="info" [value]="80"></ngb-progressbar>
+
+                          <p>{{ 'Realización de visita de duración mínima' | translate }}</p>
+                          <ngb-progressbar type="success" [value]="40"></ngb-progressbar>
+
+                          <p>{{ 'Realización de visita de duración normal' | translate }}</p>
+                          <ngb-progressbar type="warning" [value]="60"></ngb-progressbar>
+
+                          <p>{{ 'Realización de visita de duración máxima' | translate }}</p>
+                          <ngb-progressbar type="danger" [value]="80"></ngb-progressbar>
+
+                        </div>
+                        <div class="container col-md-6">
+                          <h4>
+                            <b>{{ 'Ofertas' | translate }}</b>
+                          </h4>
+                          <p>{{ 'Elaborar ofertas' | translate }}</p>
+                          <ngb-progressbar type="info" [value]="20"></ngb-progressbar>
+
+                          <p>{{ 'Presentar oferta con duración mínima' | translate }}</p>
+                          <ngb-progressbar type="success" [value]="35"></ngb-progressbar>
+
+                          <p>{{ 'Presentar oferta con duración normal' | translate }}</p>
+                          <ngb-progressbar type="warning" [value]="45"></ngb-progressbar>
+
+                          <p>{{ 'Presentar oferta con duración máxima' | translate }}</p>
+                          <ngb-progressbar type="danger" [value]="75"></ngb-progressbar>
+
+                          <h4>
+                            <b>{{ 'Contratos' | translate }}</b>
+                          </h4>
+                          <p>{{ 'Reunión de cierre con duración mínima' | translate }}</p>
+                          <ngb-progressbar type="success" [value]="30"></ngb-progressbar>
+
+
+                          <p>{{ 'Reunión de cierre con duración normal' | translate }}</p>
+                          <ngb-progressbar type="warning" [value]="40"></ngb-progressbar>
+
+                          <p>{{ 'Reunión de cierre con duración máxima' | translate }}</p>
+                          <ngb-progressbar type="danger" [value]="80"></ngb-progressbar>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="center">
+                    <h3>{{ 'GRÁFICOS' | translate }}</h3>
+                  </div>
+                  <div class="col-md-4 center">
+                    <a (click)="goTo('efficiency')">
+                      <button type="button" id="pedido_i" value="" class="btn btn-blue btn-rounded">{{ 'Eficiencia comercial' | translate }}</button>
+                    </a>
+                  </div>
+                  <div class="col-md-4 center">
+                    <a (click)="goTo('rConvertion')">
+                      <button type="button" id="conversion_i" value="" class="btn btn-blue btn-rounded">{{ 'Ratio conversión' | translate }}</button>
+                    </a>
+                  </div>
+                  <div class="col-md-4 center">
+                    <a (click)="goTo('objective')">
+                      <button type="button" value="" class="btn btn-blue btn-rounded">{{ 'Objetivos' | translate }}</button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of group parameters and graphs links -->
+          <!-- Time control group -->
+          <div class="post-thumbnail">
+            <h3 class="center" style="color:#788cb9;">
+              <strong>{{ 'Control del tiempo' | translate }}</strong>
+            </h3>
+          </div>
+          <div class="post-text">
+            <div class="post-meta">
+              {{ 'Tiempo consumido' | translate }}
+            </div>
+            <div class="post-content">
+              <div class="col-md-4 col-sm-4">
+                <label>
+                  <b>{{ 'Primer mes' | translate }}</b>
+                </label>
+                <div *ngIf="totalTime <= 10080">
+                  <ngb-progressbar type="info" [value]="(totalTime/10080) * 100 | number : '1.0-0'">
+                    <span style="opacity: 1;">{{ (totalTime/10080) * 100 | number : '1.0-0' }}%</span>
+                  </ngb-progressbar>
+                </div>
+                <div *ngIf="totalTime > 10080">
+                  <ngb-progressbar type="info" [value]="100">
+                    <span style="opacity: 1;">100%</span>
+                  </ngb-progressbar>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4">
+                <label>
+                  <b>{{ 'Segundo mes' | translate }}</b>
+                </label>
+                <div *ngIf="totalTime <= 10080">
+                  <ngb-progressbar type="info" [value]="0">
+                    <span style="opacity: 1;">0%</span>
+                  </ngb-progressbar>
+                </div>
+                <div *ngIf="totalTime > 10080 && totalTime < 20160">
+                  <ngb-progressbar type="info" [value]="((totalTime%10080)/10080) * 100 | number : '1.0-0'">
+                    <span style="opacity: 1;">{{ ((totalTime%10080)/10080) * 100 | number : '1.0-0' }}%</span>
+                  </ngb-progressbar>
+                </div>
+                <div *ngIf="totalTime >= 20160">
+                  <ngb-progressbar type="info" [value]="100">
+                    <span style="opacity: 1;">100%</span>
+                  </ngb-progressbar>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+              <label>
+                <b>{{ 'Tercer mes' | translate }}</b>
+              </label>
+              <div *ngIf="totalTime <= 20160">
+                <ngb-progressbar type="info" [value]="0">
+                  <span style="opacity: 1;">0%</span>
+                </ngb-progressbar>
+              </div>
+              <div *ngIf="totalTime > 20160 && totalTime < 30240">
+                <ngb-progressbar type="info" [value]="((totalTime%20160)/10080) * 100 | number : '1.0-0'">
+                  <span style="opacity: 1;">{{ ((totalTime%20160)/10080) * 100 | number : '1.0-0' }}%</span>
+                </ngb-progressbar>
+              </div>
+              <div *ngIf="totalTime >= 30240">
+                <ngb-progressbar type="info" [value]="100">
+                  <span style="opacity: 1;">100%</span>
+                </ngb-progressbar>
+              </div>
+            </div>
+            <div class="col-md-12 col-sm-12 m-t-40">
+              <label class="center">
+                <b>{{ 'Total trimestre' | translate }}</b>
+              </label>
+              <ngb-progressbar type="danger" [value]="(totalTime/30240) * 100 | number : '1.3-3'">
+                <span style="opacity: 1;">{{ (totalTime/30240) | percent : '1.1-1' }}</span>
+              </ngb-progressbar>
+            </div>
+          </div>
+
+
+          <!-- End of time control group -->
+          <!-- Sales efficiency group -->
+          <a name="efficiency" id="efficiency"></a>
+          <div class="post-thumbnail" id="efficiency">
+            <h3 class="center" style="color:#788cb9;">
+              <strong>{{ 'Eficiencia comercial' | translate }}</strong>
+            </h3>
+          </div>
+          <div class="post-text">
+            <div class="post-meta">
+              {{ 'Porcentaje del tiempo total empleado en la actividad comercial convertido en ventas' | translate }}
+            </div>
+            <div class="post-content">
+              <div [hidden]="!cEfficiencyChartData.length">
+                <canvas #cEfficiency="base-chart" baseChart [data]="cEfficiencyChartData" [labels]="cEfficiencyChartLabels" [options]="lineChartOptions"
+                  [colors]="cEfficiencyColor" [legend]="false" [chartType]="lineChartType"></canvas>
+              </div>
+            </div>
+          </div>
+          <!-- End Sales efficiency group -->
+          <!-- Sales convertion ratio group -->
+          <a name="ratio" id="rConvertion"></a>
+          <div class="post-thumbnail">
+            <h3 class="center" style="color:#788cb9;">
+              <strong>{{ 'Ratio Conversión' | translate }}</strong>
+            </h3>
+          </div>
+
+          <div class="post-text">
+            <div class="post-meta">
+              {{ 'Porcentaje de clientes potenciales convertidos en ventas' | translate }}
+            </div>
+            <div class="post-content" [ngStyle]="{display: !rConvertionChartData.length ? 'none' : 'block'}">
+              <div class="col-md-6 col-sm-6 col-md-offset-1 col-sm-offset-1">
+                <canvas #rConvertion="base-chart" baseChart [data]="rConvertionChartData" [labels]="rConvertionChartLabels" [colors]="rConvertionColor"
+                  [chartType]="rConvertionChartType"></canvas>
+              </div>
+              <div class="col-sm-4 col-sm-4 single-pricing-wrap center animated fadeIn visible" data-animation="fadeIn" data-animation-delay="800">
+                <div class="single-pricing bg-dark">
+                  <div class="pricing-head">
+                    <h4 class="pricing-heading color-scheme">{{ 'Ratio de Conversión' | translate }}</h4>
+                    <div class="price">
+                      <h3 *ngIf="tLeads != 0">
+                        <span class="dollar">%</span>
+                        {{ (contractGreen / tLeads) * 100 | number : '1.0-0' }}
+                        <!-- <span class="month">/month</span> -->
+                      </h3>
+                      <h3 *ngIf="tLeads == 0">
+                        <span class="dollar">%</span>
+                        0
+                        <!-- <span class="month">/month</span> -->
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--End sales convertion ratio group -->
+          <!-- Objetives achievement group -->
+          <a name="objective" id="objective"></a>
+          <div class="post-thumbnail">
+            <h3 class="center" style="color:#788cb9;">
+              <strong>{{ 'Cumplimiento de objetivos' | translate }}</strong>
+            </h3>
+          </div>
+          <div class="post-text">
+            <div class="post-meta">
+              {{ 'Porcentaje de cumplimiento de objetivos sobre ventas medido en número de contratos' | translate }}
+            </div>
+            <div class="post-content">
+              <div [hidden]="!goalsChartData.length">
+                <canvas #goals="base-chart" baseChart [data]="goalsChartData" [labels]="goalsChartLabels" [options]="lineChartOptions" [colors]="goalsColor"
+                  [legend]="false" [chartType]="lineChartType"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Objetive achievement group-->
+      </div>
+    </div>
+  </div>
+
+</section>
+<!--End  Blog Single -->
+<!-- Begin Call to Action Contact -->
+<section class="section-call-action">
+  <div class="container center">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="section-title">{{ '¿Tiene dudas o sugerencias?' | translate }} </h3>
+        <p>{{ 'Estaremos encantados de atenderle, pero por favor, antes de salir asegurese de que ha terminado su simulación.'
+          | translate }}</p>
+        <p> {{ 'Muchas gracias.' | translate }}</p>
+        <br>
+      </div>
+      <div class="col-md-12">
+
+        <a *ngIf="translate.currentLang === 'es'" href="http://www.diantum.com/index.php/es/contact-us-3" target="_blank" class="btn btn-dark btn-rounded hover-effect">{{ 'Contacte con nosotros' | translate }}</a>
+        <a *ngIf="translate.currentLang === 'en'" href="http://www.diantum.com/index.php/en/contact-us-2" target="_blank" class="btn btn-dark btn-rounded hover-effect">{{ 'Contacte con nosotros' | translate }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #getGameModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">{{ '¿Quieres disfrutar de la simulación completa?' | translate }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <p>{{ 'Si tienes un Código de Acceso, por favor identifícate con tu login e introduce tu Código de Acceso. Si no tienes
+      un Código de Acceso, puedes conseguirlo' | translate }}
+      <a *ngIf="translate.currentLang === 'es'" href="http://www.diantum.com/index.php/es/shop-es/categories-2" target="_blank"
+        class="c-blue" (click)="c('Close click')">{{ 'aquí' | translate }}.</a>
+      <a *ngIf="translate.currentLang === 'en'" href="http://www.diantum.com/index.php/en/shop-en/categories-3" target="_blank"
+        class="c-blue" (click)="c('Close click')">{{ 'aquí' | translate }}.</a>
+    </p>
+  </div>
+  <div class="modal-footer">
+
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">{{ 'Cerrar' | translate }}</button>
+  </div>
+</ng-template>
+
+<ng-template #paramsModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">{{ 'Resultados de la Simulación' | translate }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h5>{{ 'Parámetros' | translate }}</h5>
+    <table class="table table-striped f-12">
+      <thead>
+      </thead>
+      <tbody>
+        <tr class="primary">
+          <td>{{ 'Objetivo de contratos realizados al trimestre' | translate }}</td>
+          <td id="plazo_entrega_i">{{ params?.nObjective }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <h5>{{ 'Resultados' | translate }}</h5>
+    <table class="table table-striped f-12">
+      <thead>
+      </thead>
+      <tbody>
+        <tr class="primary">
+          <td>{{ 'Tiempo' | translate }}</td>
+          <td>{{ log.time }}</td>
+        </tr>
+        <tr class="primary">
+          <td>{{ 'Cumplimiento de objetivos' | translate }}</td>
+          <td>{{ log.aGoals }}</td>
+        </tr>
+        <tr class="primary">
+          <td>{{ 'Leads Totales' | translate }}</td>
+          <td>{{ log.tLeads }}</td>
+        </tr>
+        <tr class="primary">
+          <td>{{ 'Contratos' | translate }}</td>
+          <td>{{ log.contractGreen }}</td>
+        </tr>
+        <tr class="primary">
+          <td>{{ 'Ratio conversión' | translate }}</td>
+          <td>{{ log.rConvertion }}</td>
+        </tr>
+        <tr class="primary">
+          <td>{{ 'Eficiencia comercial' | translate }}</td>
+          <td>{{ log.cEfficiency }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">{{ 'Cerrar' | translate }}</button>
+  </div>
+</ng-template>

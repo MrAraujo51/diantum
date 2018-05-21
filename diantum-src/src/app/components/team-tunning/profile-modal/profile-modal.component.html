@@ -1,0 +1,183 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ 'Detalles del perfil' | translate }}: {{ selectedComp.name }}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="row" style="font-size: 0.9em;">
+
+    <label class="col-md-1 col-md-offset-2">Alto</label>
+    <ngb-rating class="col-md-2" (rate)="3" [max]="3" readonly>
+      <ng-template let-fill="fill">
+        <span class="star">&#9733;</span>
+      </ng-template>
+    </ngb-rating>
+
+    <label class="col-md-1">Medio</label>
+    <ngb-rating class="col-md-2" (rate)="2" [max]="2" readonly>
+      <ng-template let-fill="fill">
+        <span class="star">&#9733;</span>
+      </ng-template>
+    </ngb-rating>
+
+    <label class="col-md-1">Bajo</label>
+    <ngb-rating class="col-md-2" (rate)="1" [max]="1" readonly>
+      <ng-template let-fill="fill">
+        <span class="star">&#9733;</span>
+      </ng-template>
+    </ngb-rating>
+
+  </div>
+  <hr>
+  <div class="row">
+    <label class="col-md-5 col-md-offset-2">
+      Planificacion 
+      <button type="button" class="astext" placement="top" ngbTooltip="Es capaz de planificar su trabajo de forma autónoma">
+          <i class="fa fa-info"></i>
+        </button>
+    </label>
+    <ngb-rating class="col-md-4" [(rate)]="selectedComp.behav.planificacion" [max]="selectedComp.behav.planificacion" readonly>
+      <ng-template let-fill="fill">
+        <span class="star">&#9733;</span>
+      </ng-template>
+    </ngb-rating>
+
+    <label class="col-md-5 col-md-offset-2">
+      Priorización 
+        <button type="button" class="astext" placement="top" ngbTooltip="Priorizar y focalizar sus actividades de forma autónoma">
+          <i class="fa fa-info"></i>
+        </button>
+     </label>
+    <ngb-rating class="col-md-4" [(rate)]="selectedComp.behav.priorizar" [max]="selectedComp.behav.priorizar" readonly>
+      <ng-template let-fill="fill">
+        <span class="star">&#9733;</span>
+      </ng-template>
+    </ngb-rating>
+
+    <label class="col-md-5 col-md-offset-2">
+      Coordinación 
+      <button type="button" class="astext" placement="top" ngbTooltip="Se relaciona y coordina con los demás de forma independiente">
+          <i class="fa fa-info"></i>
+        </button>
+    </label>
+    <ngb-rating class="col-md-4" [(rate)]="selectedComp.behav.coordinacion" [max]="selectedComp.behav.coordinacion" readonly>
+      <ng-template let-fill="fill">
+        <span class="star">&#9733;</span>
+      </ng-template>
+    </ngb-rating>
+
+    <label class="col-md-5 col-md-offset-2">
+      Toma de decisiones 
+      <button type="button" class="astext" placement="top" ngbTooltip="Es capaz de tomar decisiones de forma independiente">
+          <i class="fa fa-info"></i>
+        </button>
+    </label>
+    <ngb-rating class="col-md-4" [(rate)]="selectedComp.behav.tomaDecisiones" [max]="selectedComp.behav.tomaDecisiones" readonly>
+      <ng-template let-fill="fill">
+        <span class="star">&#9733;</span>
+      </ng-template>
+    </ngb-rating>
+
+    <label class="col-md-5 col-md-offset-2">
+      Motivación 
+      <button type="button" class="astext" placement="top" ngbTooltip="Grado de motivación personal">
+          <i class="fa fa-info"></i>
+        </button>
+    </label>
+    <ngb-rating class="col-md-4" [(rate)]="selectedComp.behav.motivacion" [max]="selectedComp.behav.motivacion" readonly>
+      <ng-template let-fill="fill">
+        <span class="star">&#9733;</span>
+      </ng-template>
+    </ngb-rating>
+
+    <label class="col-md-5 col-md-offset-2">
+      Solución de problemas
+      <button type="button" class="astext" placement="top" ngbTooltip="Soluciona de forma autónoma las dificultades que surgen en el día a día">
+          <i class="fa fa-info"></i>
+        </button>
+    </label>
+    <ngb-rating class="col-md-4" [(rate)]="selectedComp.behav.solProblemas" [max]="selectedComp.behav.solProblemas" readonly>
+      <ng-template let-fill="fill">
+        <span class="star">&#9733;</span>
+      </ng-template>
+    </ngb-rating>
+
+    <label class="col-md-5 col-md-offset-2">
+      Transparencia
+      <button type="button" class="astext" placement="top" ngbTooltip="Nivel de visibilidad y transpencia que aporta en su trabajo">
+          <i class="fa fa-info"></i>
+        </button>
+    </label>
+    <ngb-rating class="col-md-4" [(rate)]="selectedComp.behav.transparencia" [max]="selectedComp.behav.transparencia" readonly>
+      <ng-template let-fill="fill">
+        <span class="star">&#9733;</span>
+      </ng-template>
+    </ngb-rating>
+
+    <label class="col-md-5 col-md-offset-2">
+      Calidad 
+      <button type="button" class="astext" placement="top" ngbTooltip="El trabajo que genera no necesita revisión ni corrección">
+          <i class="fa fa-info"></i>
+        </button>
+    </label>
+    <ngb-rating class="col-md-4" [(rate)]="selectedComp.behav.calidad" [max]="selectedComp.behav.calidad" readonly>
+      <ng-template let-fill="fill">
+        <span class="star">&#9733;</span>
+      </ng-template>
+    </ngb-rating>
+
+    <label class="col-md-5 col-md-offset-2">
+      Facilidad de relación
+      <button type="button" class="astext" placement="top" ngbTooltip="No genera conflictos ni problemas de relación con el resto del equipo">
+          <i class="fa fa-info"></i>
+        </button>
+    </label>
+    <ngb-rating class="col-md-4" [(rate)]="selectedComp.behav.relacion" [max]="selectedComp.behav.relacion" readonly>
+      <ng-template let-fill="fill">
+        <span class="star">&#9733;</span>
+      </ng-template>
+    </ngb-rating>
+
+    <label class="col-md-5 col-md-offset-2">
+      Formación
+      <button type="button" class="astext" placement="top" ngbTooltip="No necesita training en habilidades o contenidos que ya debe conocer">
+          <i class="fa fa-info"></i>
+        </button>
+    </label>
+    <ngb-rating class="col-md-4" [(rate)]="selectedComp.behav.formacion" [max]="selectedComp.behav.formacion" readonly>
+      <ng-template let-fill="fill">
+        <span class="star">&#9733;</span>
+      </ng-template>
+    </ngb-rating>
+
+    <label class="col-md-5 col-md-offset-2">
+      Coaching
+      <button type="button" class="astext" placement="top" ngbTooltip="No surgen situaciones o problemas que revelen la necesidad de hacer coaching">
+          <i class="fa fa-info"></i>
+        </button>
+    </label>
+    <ngb-rating class="col-md-4" [(rate)]="selectedComp.behav.coaching" [max]="selectedComp.behav.coaching" readonly>
+      <ng-template let-fill="fill">
+        <span class="star">&#9733;</span>
+      </ng-template>
+    </ngb-rating>
+
+    <label class="col-md-5 col-md-offset-2">
+      Carrera Profesional
+      <button type="button" class="astext" placement="top" ngbTooltip="Tiene inquitudes de evolucionar su carrera profesional y se ocupa de su gestión">
+          <i class="fas fa-info"></i>
+        </button>
+     </label>
+    <ngb-rating class="col-md-4" [(rate)]="selectedComp.behav.carreraPro" [max]="selectedComp.behav.carreraPro" readonly>
+      <ng-template let-fill="fill">
+        <span class="star">&#9733;</span>
+      </ng-template>
+    </ngb-rating>
+  </div>
+
+</div>
+<div class="modal-footer">
+
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">{{ 'Cerrar' | translate }}</button>
+</div>

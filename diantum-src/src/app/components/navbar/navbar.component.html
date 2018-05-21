@@ -1,0 +1,73 @@
+  <div [ngClass]="{'topnav fixed-topnav transparent topnav-top': true, 'bg-dark': isColorDark()}">
+    <div class="section">
+      <div id="topbar-hold" class="nav-hold container">
+        <nav class="navbar" >
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- Site Name -->
+            <a *ngIf="translate.currentLang === 'es'" href="http://www.diantum.com/index.php/es/" target="_blank" class="site-name navbar-brand" ></a>
+            <a *ngIf="translate.currentLang === 'en'" href="http://www.diantum.com/index.php/en/" target="_blank" class="site-name navbar-brand" ></a>            
+          </div>
+          <!-- Main Navigation menu Starts -->
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right sm" >
+              <li>
+                <a [routerLink]="['/home']">{{ 'Navbar.HomeLink' | translate }}</a>
+              </li>
+              <li>
+                <a *ngIf="translate.currentLang === 'es'" href="http://www.diantum.com/index.php/es/shop-es/categories-2" target="_blank">{{ 'Navbar.Tienda' | translate }}</a>
+                <a *ngIf="translate.currentLang === 'en'" href="http://www.diantum.com/index.php/en/shop-en/categories-3" target="_blank">{{ 'Navbar.Tienda' | translate }}</a>                
+              </li>
+              <li class="dropdown">
+                <a [routerLink]="['/products']" class="dropdown-toggle top-menu" data-toggle="dropdown" data-hover="dropdown" data-close-others="false">{{ 'Navbar.ProdLink' | translate }}</a>
+                <ul class="dropdown-menu">
+                  <li><a [routerLink]="['/candies-game']">{{ 'Navbar.CandiesLink' | translate }}</a></li>
+                  <li><a [routerLink]="['/sales-cyclum']">{{ 'Navbar.ActiComLink' | translate }}</a></li>                      
+                </ul>
+              </li>
+              <li>
+                <a *ngIf="translate.currentLang === 'es'" href="http://www.diantum.com/index.php/es/contact-us-3" target="_blank">{{ 'Navbar.ContLink' | translate }}</a>
+                <a *ngIf="translate.currentLang === 'en'" href="http://www.diantum.com/index.php/en/contact-us-2" target="_blank">{{ 'Navbar.ContLink' | translate }}</a>
+              </li>
+              <li class="dropdown" [hidden]="authService.loggedIn()">
+                <a href="#" class="dropdown-toggle top-menu" data-toggle="dropdown" data-hover="dropdown" data-close-others="false">{{ 'Navbar.SignInLink' | translate }}</a>
+                <ul class="dropdown-menu">
+                  <li><a [routerLink]="['/signin']">{{ 'Navbar.SignInLink' | translate }}</a></li>
+                  <li><a *ngIf="translate.currentLang === 'es'" href="http://www.diantum.com/index.php/es/registration" target="_blank">{{ 'Navbar.SingUpLink' | translate }}</a></li>
+                  <li><a *ngIf="translate.currentLang === 'en'" href="http://www.diantum.com/index.php/en/registration" target="_blank">{{ 'Navbar.SingUpLink' | translate }}</a></li>                  
+                </ul>
+              </li>
+              <li class="dropdown" [hidden]="!authService.loggedIn()"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a href="" class="dropdown-toggle top-menu" id="avatarDropdown" data-toggle="dropdown" data-hover="dropdown" data-close-others="false">
+                  <img class="avatar float-left mr-1" src="https://gravatar.com/avatar/?s=200&d=retro">
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="avatarDropdown">
+                  <li class="dropdown-header">
+                    <h5><i class="line-icon-user  m-r-10"></i><strong>{{ currentUser}}</strong></h5>
+                  </li>
+                  <div class="dropdown-divider"></div>
+                  <li><a [routerLink]="['/profile/user']">{{ 'Mi Area' | translate }}</a></li>
+                  <div class="dropdown-divider"></div>
+                  <li><a (click)="onLogoutClick()" href="#">{{ 'Navbar.LogoutLink' | translate }}</a></li>
+              
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="javascript:void(0)" class="dropdown-toggle top-menu" data-toggle="dropdown" data-hover="dropdown" data-close-others="false">{{ translate.currentLang | uppercase}}</a>
+                <ul class="dropdown-menu">
+                  <li><a (click)="changeLanguage('es')">ES</a></li>
+                  <li><a (click)="changeLanguage('en')">EN</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <!-- Main Navigation menu ends-->
+        </nav>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,415 @@
+
+<!-- Begin Header Image -->
+<header class="center header-sm bg-dark" data-img="bg/smoke2.png">
+  <div class="container fade-text">
+    <h1 class="header-title text-center">{{ 'JUEGOS DE BOMBONES' | translate }}</h1>
+    <p class="header-message text-center">{{ 'El reto de consiguir el mejor nivel de servicio con la mayor rentabilidad' | translate }}</p>
+  </div>
+</header>
+<!-- End Header Image -->
+<!--  End Topbar simple -->
+<!-- Begin  Blog Single -->
+<section class="section-blog blog-single clearfix" style="background:#b9cfdf;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="post">
+          <div class="post-thumbnail">
+            <h3 class="center" style="color:#788cb9;"><strong>{{ 'Panel de Control' | translate }}</strong></h3>
+          </div>
+
+          <div class="post-text">
+            <div class="col-sm-3 col-md-3">
+              <div class="row">
+                <div class="col-sm-12 col-md-9">
+                  <div class="row">
+                    <div class="product-img small-images">
+                      <img src="assets/images/gallery/candiesgamemini2.png" class="img-responsive" alt="candies game logo">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-12 col-sm-12 m-t-20 p-5-responsive">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 p-5-responsive">
+                      <button type="button" 
+                              class="btn btn-success btn-rounded btn-block btn-f-13" 
+                              (click)="startSimulation()" 
+                              [disabled]="initGame">{{ 'Iniciar Simulación' | translate }} </button>
+                    </div>
+                    <div class="col-md-12 col-sm-12 p-5-responsive">
+                        <button type="button" 
+                                class="btn btn-danger btn-rounded btn-block btn-f-13"
+                                (click)="finalizeSimulation()"
+                                [disabled]="!initGame">{{ 'Finalizar Simulación' | translate }}</button>
+                    </div>
+                    <div class="col-md-12 col-sm-12 p-5-responsive" *ngIf="canPlay">
+                      <a [routerLink]="['/candies-game/rules']" target="_blank">
+                        <button type="button" 
+                                class="btn btn-default btn-rounded btn-block btn-f-13">
+                                <i class="fa fa-list pull-left"></i>{{ 'Reglas de Juego' | translate }}</button>
+                      </a>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <div class="row">
+                <div class="center" id="periodo_i">
+                  <h3>{{ 'PERIODO' | translate }}</h3>
+                </div>
+                <div class="row p-10 center">
+                  <div class="col-md-6 col-sm-6 col-sm-offset-3">
+                    <img src="assets/images/gallery/calendar_red.png" class="img-responsive small.images" alt="calendar">
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-sm-offset-3">
+                    <label><h3 class="center">{{periodo + 1}}</h3></label>
+                  </div>
+                </div>
+                <br>
+                <div class="col-md-12">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th class="center btn-f-13">{{ 'Demanda' | translate }} - <i class="fa fa-cloud-download"></i></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td id="demanda_i" *ngIf="initGame" class="center">{{randomDemand}}</td>
+                        <td *ngIf="!initGame"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-md-12">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th class="center btn-f-13">{{ 'Inventario' | translate }} - <i class="fa fa-cubes"></i></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td id="inventario_i" *ngIf="initGame" class="center">{{inventario}}</td>
+                        <td *ngIf="!initGame"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3 col-sm-3">
+              <div class="row">
+                <div class="center" id="periodo_i">
+                  <h3>{{ 'Pedidos' | translate | uppercase }}</h3>
+                </div>
+
+                <div class="col-md-12">
+                  <form role="form" class="form-validation">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <input  class="form-control" 
+                                type="number" 
+                                name="pedido" 
+                                min="0" max="10" value="0" 
+                                [(ngModel)]="pedido" 
+                                pattern="[0-9]{10}"
+                                (keyup)="onOrder($event)">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group center">
+                        <button type="button" id="pedido_i" value="Pedir" class="btn btn-warning btn-rounded" [disabled]="!initGame" (click)="pedir()">{{ 'Pedir' | translate }}</button>
+                      </div>
+                    </div>
+                    <div class="form-group center">
+                      <button type="button" value="Borrar" class="btn btn-dark btn-rounded" [disabled]="!initGame">{{ 'Borrar' | translate }}</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3 col-sm-3">
+              <div class="row">
+                <div class="center" id="periodo_i">
+                  <h3>{{ 'GRAFICOS' | translate }}</h3>
+                </div>
+                <div class="col-md-12 center">
+                  <a (click)="goTo('serviceLevel')">
+                    <button type="button" class="btn btn-blue btn-rounded">{{ 'Nivel Servicio' | translate }}</button>
+                  </a>
+                </div>
+                <div class="col-md-12 center">
+                  <a (click)="goTo('rentabillity')">
+                    <button type="button" class="btn btn-blue btn-rounded">{{ 'Rentabilidad' | translate }}</button>
+                  </a>
+                </div>
+                <div class="center">
+                  <h3>{{ 'PARAMETROS' | translate }}</h3>
+                </div>
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="panel-group panel-accordion" id="accordion_candies">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h4>
+                            <a data-toggle="collapse" data-parent="#accordion1" href="#parameters-candies">
+                              {{ 'Consultar Estado' | translate }}
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="parameters-candies" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <table class="table table-striped f-12">
+                              <thead>
+                              </thead>
+                              <tbody>
+                                <tr class="primary">
+                                  <td>{{ 'Plazo de entrega' | translate }}</td>
+                                  <td id="plazo_entrega_i">{{params?.plazoEntrega}}</td>
+                                </tr>
+                                <tr class="primary">
+                                  <td>{{ 'Variabilidad demanda' | translate }}</td>
+                                  <td id="plazo_entrega_i">{{params?.variabilidad?.start}}-{{params?.variabilidad?.end}}</td>
+                                </tr>
+                                <tr class="primary">
+                                  <td>{{ 'Nivel inicial inventario' | translate }}</td>
+                                  <td id="inventario_inic_i">{{params?.inventarioInicial}}</td>
+                                </tr>
+                                <tr class="danger">
+                                  <td>{{ 'Coste Unitario Inventario' | translate }}</td>
+                                  <td id="ICC_i">{{params?.costeUnitario?.inventario}}</td>
+                                </tr>
+                                <tr class="danger">
+                                  <td>{{ 'Coste Unitario Oportunidad' | translate }}</td>
+                                  <td id="COP_i">{{params?.costeUnitario?.oportunidad}}</td>
+                                </tr>
+                                <tr class="danger">
+                                  <td>{{ 'Coste Unitario Compra' | translate }}</td>
+                                  <td id="CCO_i">{{params?.costeUnitario?.compra}}</td>
+                                </tr>
+                                <tr class="success">
+                                  <td>{{ 'Precio Unitario Venta' | translate }}</td>
+                                  <td id="PVT_i">{{params?.costeUnitario?.venta}}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="post-thumbnail">
+            <h3 class="center" style="color:#788cb9;"><strong>{{ 'Periodos' | translate }}</strong></h3>
+          </div>
+
+          <div class="post-text">
+            <div class="post-meta">
+              # {{ 'Periodos' | translate }}: 40
+            </div>
+            <div class="post-content">
+              <table class="table table-striped table-bordered text-center font-11">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <ng-container *ngFor="let item of header; let i = index">
+                      <th class="text-center" *ngIf="i >= start">{{item}}</th>
+                    </ng-container>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><b>{{ 'Demanda' | translate | uppercase }}</b></td>
+                    <ng-container *ngFor="let value of data[0]; let i = index">
+                      <td *ngIf="i >= start">{{value}}</td>
+                    </ng-container>
+                  </tr>
+                  <tr>
+                    <td><b>{{ 'Inventario' | translate | uppercase }}</b></td>
+                    <ng-container *ngFor="let value of data[1]; let i = index">
+                      <td *ngIf="i >= start">{{value}}</td>
+                    </ng-container>
+                  </tr>
+                  <tr>
+                    <td><b>{{ 'En camino' | translate | uppercase }}</b></td>
+                    <ng-container *ngFor="let value of data[2]; let i = index">
+                      <td *ngIf="i >= start">{{value}}</td>
+                    </ng-container>
+                  </tr>
+                  <tr>
+                    <td><b>{{ 'Pedidos' | translate | uppercase }}</b></td>
+                    <ng-container *ngFor="let value of data[3]; let i = index">
+                      <td *ngIf="i >= start">{{value}}</td>
+                    </ng-container>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
+
+          <div class="post-thumbnail" id="serviceLevel">
+            <a name="service_level_graph"></a>
+            <h3 class="center" style="color:#788cb9;"><strong>{{ 'Nivel de Servicio' | translate }}</strong></h3>
+          </div>
+
+          <div class="post-text">
+            <div class="post-meta">
+              {{ 'Porcentaje de la demanda total acumulada satisfecha hasta el periodo en curso' | translate }}
+            </div>
+            <div [hidden]="!serviceLevelChartData.length">
+              <canvas #serviceLevel="base-chart" baseChart 
+                	    [data]="serviceLevelChartData" 
+                      [labels]="lineChartLabels" 
+                      [options]="lineChartOptions"
+                      [colors] = "serviceLevelColor"
+                      [legend]="false" 
+                      [chartType]="lineChartType"></canvas>
+            </div>
+          </div>
+
+          <div class="post-thumbnail" id="rentabillity">
+            <a name="profitability_graph"></a>
+            <h3 class="center" style="color:#788cb9;"><strong>{{ 'Rentabilidad' | translate }}</strong></h3>
+          </div>
+
+          <div class="post-text">
+            <div class="post-meta">
+              {{ 'Rentabilidad total hasta el periodo en curso' | translate }}
+            </div>
+            <div [hidden]="!rentabillityChartData.length">
+              <canvas #rentabillity="base-chart" baseChart 
+                      [data]="rentabillityChartData" 
+                      [labels]="lineChartLabels" 
+                      [options]="lineChartOptions"
+                      [colors]="rentabillityColor"
+                      [legend]="false" 
+                      [chartType]="lineChartType"></canvas>
+            </div>
+            <div class="post-content">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--End  Blog Single -->
+<!-- Begin Call to Action Contact -->
+<section class="section-call-action">
+  <div class="container center">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="section-title">{{ '¿Tiene dudas o sugerencias?' | translate }} </h3>
+        <p>{{ 'Estaremos encantados de atenderle, pero por favor, antes de salir asegurese de que ha terminado su simulación.' | translate }}</p>
+        <p> {{ 'Muchas gracias.' | translate }}</p>
+        <br>
+      </div>
+      <div class="col-md-12">
+        <a *ngIf="translate.currentLang === 'es'" href="http://www.diantum.com/index.php/es/contact-us-3" target="_blank" class="btn btn-dark btn-rounded hover-effect">{{ 'Contacte con nosotros' | translate }}</a>          
+        <a *ngIf="translate.currentLang === 'en'" href="http://www.diantum.com/index.php/en/contact-us-2" target="_blank" class="btn btn-dark btn-rounded hover-effect">{{ 'Contacte con nosotros' | translate }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #getGameModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">{{ '¿Quieres disfrutar de la simulación completa?' | translate }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <p>{{ 'Si tienes un Código de Acceso, por favor identifícate con tu login e introduce tu Código de Acceso. Si no tienes un Código de Acceso, puedes conseguirlo' | translate }} 
+      <a *ngIf="translate.currentLang === 'es'" href="http://www.diantum.com/index.php/es/shop-es/categories-2" target="_blank" class="c-blue" (click)="c('Close click')">{{ 'aquí' | translate }}.</a>
+      <a *ngIf="translate.currentLang === 'en'" href="http://www.diantum.com/index.php/en/shop-en/categories-3" target="_blank" class="c-blue" (click)="c('Close click')">{{ 'aquí' | translate }}.</a>      
+    </p>
+  </div>
+  <div class="modal-footer">
+
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">{{ 'Cerrar' | translate }}</button>
+  </div>
+</ng-template>
+
+<ng-template #paramsModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">{{ 'Resultados de la Simulación' | translate }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h5>{{ 'Parámetros' | translate }}</h5>
+    <table class="table table-striped f-12">
+      <thead>
+      </thead>
+      <tbody>
+        <tr class="primary">
+          <td>{{ 'Plazo de entrega' | translate }}</td>
+          <td id="plazo_entrega_i">{{params?.plazoEntrega}}</td>
+        </tr>
+        <tr class="primary">
+          <td>{{ 'Variabilidad demanda' | translate }}</td>
+          <td id="plazo_entrega_i">{{params?.variabilidad?.start}}-{{params?.variabilidad?.end}}</td>
+        </tr>
+        <tr class="primary">
+          <td>{{ 'Nivel inicial inventario' | translate }}</td>
+          <td id="inventario_inic_i">{{params?.inventarioInicial}}</td>
+        </tr>
+        <tr class="danger">
+          <td>{{ 'Coste Unitario Inventario' | translate }}</td>
+          <td id="ICC_i">{{params?.costeUnitario?.inventario}}</td>
+        </tr>
+        <tr class="danger">
+          <td>{{ 'Coste Unitario Oportunidad' | translate }}</td>
+          <td id="COP_i">{{params?.costeUnitario?.oportunidad}}</td>
+        </tr>
+        <tr class="danger">
+          <td>{{ 'Coste Unitario Compra' | translate }}</td>
+          <td id="CCO_i">{{params?.costeUnitario?.compra}}</td>
+        </tr>
+        <tr class="success">
+          <td>{{ 'Precio Unitario Venta' | translate }}</td>
+          <td id="PVT_i">{{params?.costeUnitario?.venta}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <h5>{{ 'Resultados' | translate }}</h5>
+    <table class="table table-striped f-12">
+      <thead>
+      </thead>
+      <tbody>
+        <tr class="primary">
+          <td>{{ 'Periodos' | translate }}</td>
+          <td>{{ log.periodo }}</td>
+        </tr>
+        <tr class="primary">
+          <td>{{ 'Nivel de Servicio' | translate }}</td>
+          <td>{{ log.lservice }}</td>
+        </tr>
+        <tr class="primary">
+          <td>{{ 'Rentabilidad' | translate }}</td>
+          <td>{{ log.rentability }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">{{ 'Cerrar' | translate }}</button>
+  </div>
+</ng-template>

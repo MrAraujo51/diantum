@@ -1,0 +1,24 @@
+{
+  "name": "diantum-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.104.0",
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "cors": "*",
+    "express": "*",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "mysql": "^2.15.0",
+    "passport": "*",
+    "passport-jwt": "^3.0.0"
+  },
+  "author": "Manuel Araujo <alejandromanuel5187@gmail.com>",
+  "license": "ISC"
+}

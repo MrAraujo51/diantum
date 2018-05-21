@@ -1,0 +1,399 @@
+<header class="center header-sm bg-dark" data-img="bg/smoke2.png">
+  <div class="container fade-text">
+    <h1 class="header-title text-center">{{ 'Sales Cyclum' | translate }}</h1>
+    <p class="header-message text-center">{{ 'Reglas de Juego' | translate }}</p>
+  </div>
+</header>
+
+<section class="section-blog blog-single clearfix bg-gray-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="post">
+          <div class="post-text">
+            <div class="left">
+              <h3>{{ 'Consigue los objetivos trimestrales de ventas con la mejor eficiencia comercial' | translate }}</h3>
+              <p>
+                {{ 'En esta simulación, los alumnos protagonizan la función de gestores comerciales dentro de una organización, en la que tienen un objetivo de venta y realizan su actividad comercial en una ventana temporal de tres meses.' | translate }}
+              </p>
+              <p>
+                {{ 'Dentro de su función comercial, el alumno tiene cuatro bloques principales de actividades que conforman los procesos del ciclo de ventas:' | translate }}
+              </p>
+              <ul class="col-md-12">
+                <li>{{ 'La gestión de las oportunidades' | translate }}</li>
+                <li>{{ 'La gestión de las visitas comerciales' | translate }}</li>
+                <li>{{ 'La gestión de las ofertas' | translate }}</li>
+                <li>{{ 'El cierre de las ventas' | translate }}</li>
+              </ul>
+              <p>
+                {{ 'Durante el juego, el alumno puede generar nuevos clientes potenciales que tienen distintos grados teóricos de propensión a la compra. En esta primera fase de oportunidades, la propensión a la compra del cliente potencial es sólo aparente, ya que todavía no ha tenido la oportunidad de contactar con él y verificarla. Se indica mostrando al cliente potencial con un código de color: color verde para un mayor grado de propensión a la compra, naranja para un grado intermedio y rojo para un teórico menor grado de propensión.' | translate }}
+              </p>
+              <div class="row">
+                <div class="col-md-6 col-md-offset-2">
+                  <div class="col-md-3 col-md-offset-1 p-t-20">
+                    <div class="row center">
+                      <input type="radio" name="lead_number">
+                    </div>
+                    <img src="assets/images/game-icons/user-f-greenhover-72.png" class="img-responsive small.images" alt="potential customer">
+                    <label class="center">{{ 'Mayor propensión teórica' | translate }}</label>
+                  </div>
+                  <div class="col-md-3 col-md-offset-1 p-t-20">
+                    <div class="row center">
+                      <input type="radio" name="lead_number">
+                    </div>
+                    <img src="assets/images/game-icons/user-m-orangehover-72.png" class="img-responsive small.images" alt="potential customer">
+                    <label class="center">{{ 'Propensión neutra teórica' | translate }}</label>
+                  </div>
+                  <div class="col-md-3 col-md-offset-1 p-t-20">
+                    <div class="row center">
+                      <input type="radio" name="lead_number">
+                    </div>
+                    <img src="assets/images/game-icons/user-f-redhover-72.png" class="img-responsive small.images" alt="potential customer">
+                    <label class="center">{{ 'Menor propensión teórica' | translate }}</label>
+                  </div>
+                </div>
+              </div>
+
+              <h3>{{ 'El proceso de generación de oportunidades' | translate }}</h3>
+              <p>
+                {{ 'La generación de clientes potenciales se podrá hacer individualmente o por grupos. La generación individual de clientes potenciales,  consume más tiempo del juego, pero genera clientes potenciales con mayor grado de propensión teórico a la compra. La generación de clientes potenciales por lotes, como podría ser el proceso de captura de información de una base de datos, consume menos tiempo por cliente que el individual, pero tiende a generar clientes potenciales de menos calidad en cuanto a su grado de propensión teórico a la compra.' | translate }}
+              </p>
+              <p>
+                {{ 'Como en el resto de la gamificación, en Sales Cyclum, las acciones a realizar sobre cualquier cliente, en cualquier momento, del juego se realizan activando previamente el cliente seleccionado mediante el botón que tiene encima de su icono.' | translate }}
+              </p>
+              <p innerHtml="{{ 'La propensión real a la compra del cliente potencial se obtiene realizando un contacto representado mediante el botón de Verificar Propensión, previa selección de cliente potencial a verificar. Tras esta acción, el cliente potencial mostrará su verdadero grado de propensión a la compra mediante un código de colores, más intensos que los anteriores, que expresa lo siguiente: verde es el mayor grado real de propensión a la compra, naranja es un grado real menor de propensión a la compra y rojo representa un cliente potencial negativo, sobre el que no se puede realizar acción adicional alguna. Una mayor propensión teórica suele generar una mayor propensión real y, análogamente, una propensión menor teórica suele generar una menor propensión real o un contacto negativo, pero no siempre es necesariamente así. De hecho, un cliente potencial teórico rojo, podría generar una cliente potencial real verde, tras el proceso de verificación. También un cliente potencial teórico verde podría derivar en un cliente potencial negativo, después del proceso de verificación.' | translate }}">
+              </p>
+              <div class="row">
+                <div class="col-md-6 col-md-offset-2">
+                  <div class="col-md-3 col-md-offset-1 p-t-20">
+                    <div class="row center">
+                      <input type="radio" name="lead_number">
+                    </div>
+                    <img src="assets/images/game-icons/m-green-3.svg" class="img-responsive small.images" alt="potential customer">
+                    <label class="center"> {{ 'Mayor propensión real' | translate }}</label>
+                  </div>
+                  <div class="col-md-3 col-md-offset-1 p-t-20">
+                    <div class="row center">
+                      <input type="radio" name="lead_number">
+                    </div>
+                    <img src="assets/images/game-icons/m-orange-3.svg" class="img-responsive small.images" alt="potential customer">
+                    <label class="center">{{ 'Menor propensión real' | translate }}</label>
+                  </div>
+                  <div class="col-md-3 col-md-offset-1 p-t-20">
+                    <div class="row center">
+                      <input type="radio" name="lead_number">
+                    </div>
+                    <img src="assets/images/game-icons/m-red-3.svg" class="img-responsive small.images" alt="potential customer">
+                    <label class="center">{{ 'Cliente potencial negativo' | translate }}</label>
+                  </div>
+                </div>
+              </div>
+              <p>
+                {{ 'En función del resultado del proceso verificación, el cliente potencial habrá aceptado recibir una visita comercial o no: los negativos la habrán rechazado, los verdes y naranjas la habrán aceptado, manteniendo o cambiando en este proceso su color, y quizá modificando su grado de propensión a la compra. Los iconos se moverán del primer segmento del panel de control – Oportunidades-, al segundo - Visitas.' | translate }}
+              </p>
+              <h3>{{ 'La gestión de las visitas comerciales' | translate }}</h3>
+              <p>
+                {{ 'En este grupo tendremos los clientes potenciales que han aceptado recibir una visita comercial, con mayor o menor propensión a la compra, verdes o naranjas respectivamente. Con cada uno de ellos, debemos realizar un proceso de preparación de la visita que puede ser de tres tipos:' | translate }}
+              </p>
+              <table class="table table-striped table-bordered">
+                <thead>
+                  <tr class="primary">
+                    <td class="text-left">
+                      {{ 'Tipo' | translate }}
+                    </td>
+                    <td class="text-left">
+                      {{ 'Efecto' | translate }}
+                    </td>
+                    <td class="text-center">
+                      {{ 'Botón' | translate }}
+                    </td>
+                    <td class="text-center">
+                      {{ 'Visualización' | translate }}
+                    </td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="text-left">
+                      {{ 'Profunda' | translate }}
+                    </td>
+                    <td class="text-left">
+                      {{ 'Consume más tiempo pero facilita, aunque no garantiza, que los clientes potenciales acepten el paso a la fase de recepción de ofertas y lo hagan con mayor propensión a la compra' | translate }}
+                    </td>
+                    <td class="text-center">
+                      <button type="button" class="btn btn-sm btn-blue">
+                        <i class="fa fa-circle"></i>
+                      </button>
+                    </td>
+                    <td class="text-center">
+                      <div class="col-md-12 col-md-offset-2">
+                        <div class="row center">
+                          <input type="radio" name="example">
+                        </div>
+                        <img src="assets/images/game-icons/user-m-green-72.png" class="img-responsive small.images" alt="potential customer">
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"
+                            style="width: 90%;"></div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-left">
+                      {{ 'Media' | translate }}
+                    </td>
+                    <td class="text-left">
+                      {{ 'Consume un tiempo medio y tiene un efecto neutro en que los clientes potenciales acepten el paso a la fase de recepción de ofertas' | translate }}
+                    </td>
+                    <td class="text-center">
+                      <button type="button" class="btn btn-sm  btn-blue">
+                        <i class="fa fa-adjust"></i>
+                      </button>
+                    </td>
+                    <td class="text-center">
+                      <div class="col-md-12 col-md-offset-2">
+                        <div class="row center">
+                          <input type="radio" name="example">
+                        </div>
+                        <img src="assets/images/game-icons/user-f-green-72.png" class="img-responsive small.images" alt="potential customer">
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
+                            style="width: 50%;"></div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-left">
+                      {{ 'Ligera' | translate }}
+                    </td>
+                    <td class="text-left">
+                      {{ 'Consume poco tiempo pero puede generar más negatividad, aunque no necesariamente,  en los clientes potenciales o un menor grado de propensión a la compra en los positivos' | translate }}
+                    </td>
+                    <td class="text-center">
+                      <button type="button" class="btn btn-sm btn-blue">
+                        <i class="fa fa-circle-o-notch"></i>
+                      </button>
+                    </td>
+                    <td class="text-center">
+                      <div class="col-md-12 col-md-offset-2">
+                        <div class="row center">
+                          <input type="radio" name="example">
+                        </div>
+                        <img src="assets/images/game-icons/user-m-green-72.png" class="img-responsive small.images" alt="potential customer">
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"
+                            style="width: 10%;"></div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>
+                {{ 'Adicionalmente hay un estado en el caso de los clientes potenciales sobre los que todavía no se ha realizado ningún tipo de preparación de visita.' | translate }}
+              </p>
+              <table class="table table-striped table-bordered">
+                <thead>
+                  <tr class="primary">
+                    <td class="text-left">
+                      {{ 'Estado' | translate }}
+                    </td>
+                    <td class="text-center">
+                      {{ 'Visualización' | translate }}
+                    </td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="text-left">
+                      {{ 'Pendiente de preparar la visita. Los clientes potenciales necesitan la realización de algún tipo de preparación de visita, antes de ser visitados.' | translate }}
+                    </td>
+                    <td class="text-center">
+                      <div class="col-md-12">
+                        <div class="row center">
+                          <input type="radio" name="example">
+                        </div>
+                        <img src="assets/images/game-icons/user-f-green-72.png" class="img-responsive small.images" alt="potential customer">
+                        <div class="progress">
+                          <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                            style="width: 0%;"></div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p innerHtml="{{ 'El siguiente paso es realizar la visita comercial. De nuevo, se selecciona el cliente potencial con su botón correspondiente y se usa la opción de Realizar visita. En este caso la variabilidad está asociada a la duración de la visita, que suele tener un tiempo medio de duración, aunque algunas veces aparecen desviaciones positivas o negativas del tiempo de duración respecto a la media. Se trata de una distribución normal. Visualmente queda reflejada dentro del bloque de visitas con el siguiente indicador:' | translate }}">
+                
+              </p>
+              <div class="row m-b-20">
+                <div class="col-md-12">
+                  <div class="col-md-3 col-md-offset-1 p-t-20">
+                    <p class="center">{{ 'Duración superior a la media' | translate }}</p>
+                    <div class="progress m-b-40">
+                      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"
+                        style="width: 10%;">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-md-offset-1 p-t-20">
+                    <p class="center">{{ 'Duración media' | translate }}</p>
+                    <div class="progress m-b-40">
+                      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
+                        style="width: 50%;">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-md-offset-1 p-t-20">
+                    <p class="center">{{ 'Duración inferior a la media' | translate }}</p>
+                    <div class="progress m-b-40">
+                      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"
+                        style="width: 90%;">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {{ 'Tras la visita comercial y como resultado de esta fase, algunos clientes potenciales aceptarán pasar a la fase siguiente de gestión de ofertas, y otros darán por terminado su interés por el producto, pasando a color rojo e incrementando la lista de negatividad.' | translate }}
+              <h3>{{ 'La gestión de las ofertas' | translate }}</h3>
+              <p>
+                {{ 'El proceso de gestión de ofertas tiene dos partes: la elaboración de la oferta y la presentación de la misma. La elaboración es un proceso obligatorio y de duración constante. La presentación de la oferta es un proceso, que como en el caso de la visita comercial, puede tener una duración variable, que puede mayor o menor a la media. Estas variaciones de tiempo se muestran en pantalla en el bloque de ofertas, de la misma forma con la que se muestra la duración de las visitas comerciales.' | translate }}
+              </p>
+              <p>
+                {{ 'Nuevamente, como resultado final de esta fase, tendremos clientes potenciales que aceptarán pasar a la fase siguiente de la reunión de contratos, color verde y naranja, y otras darán por terminado su interés por el producto, pasando a color rojo e incrementando la lista de negatividad.' | translate }}
+              </p>
+              <h3>{{ 'Contratos' | translate }}</h3>
+              <p>
+                {{ 'Tras la visita comercial y como resultado de esta fase, algunos clientes potenciales aceptarán pasar a la fase siguiente de gestión de ofertas, y otras rechazarán la propuesta del producto, pasando a color rojo e incrementando la lista de negatividad. Como siempre seleccionamos el cliente potencial sobre el que queremos realizar la acción con el botón que hay sobre su icono.' | translate }}
+              </p>
+              <p>
+                {{ 'En esta fase, la acción a realizar es realizar la reunión de cierre del contrato. Nuevamente el resultado de esta reunión es variable, dependiendo del grado de propensión a la compra del cliente potencial. El tiempo de la reunión, como en los casos anteriores, también puede oscilar respecto al valor medio.' | translate }}
+              </p>
+              <p>
+                {{ 'Como resultado del proceso tendremos un contrato firmado, o un caso de negatividad en la última fase del proceso.' | translate }}
+              </p>
+              <p>
+                {{ 'Este bloque del panel de control, muestra el acumulado de contratos realizados en color verde, y el acumulado de las respuestas negativas en esta fase en color rojo.' | translate }}
+              </p>
+              <div class="row">
+                <div class="col-md-6 col-md-offset-2">
+                  <div class="col-md-3 p-t-20">
+                    <img src="assets/images/game-icons/contract-success-72.png" class="img-responsive small.images" alt="contract signed">
+                    <label class="center">{{ 'Contrato firmado' | translate }}</label>
+                  </div>
+                  <div class="col-md-3 col-md-offset-1 p-t-20">
+                    <img src="assets/images/game-icons/contract-fail-72.png" class="img-responsive small.images" alt="contract failed">
+                    <label class="center">{{ 'Contrato rechazado' | translate }}</label>
+                  </div>
+                </div>
+              </div>
+              <h3>{{ 'Duración y dinámica del juego' | translate }}</h3>
+              <p>
+                {{ 'El juego transcurre durante una ventana virtual de tiempo que representa un trimestre. El jugador va realizando sus tareas cotidianas, propias de su gestión comercial y cada tarea va consumiendo un cierto tiempo del tiempo total disponible. Como se ha explicado anteriormente, el tiempo consumido por cada tarea puede ser fijo o variable. En el segmento de control del tiempo del panel de control se puede ver en cada momento el porcentaje del tiempo total consumido en cada trimestre y del mes en curso.' | translate }}
+              </p>
+              <p>
+                {{ 'Además, en el segmento del panel de control de parámetros y gráficos se puede ver el consumo relativo de tiempo de cada tarea que se realiza en el proceso de gestión comercial. Esos consumos de tiempo también se muestran a continuación.' | translate }}
+              </p>
+              <div class="row">
+                <div class="container col-md-6">
+                  <h4>
+                    <b>{{ 'Oportunidades' | translate }}</b>
+                  </h4>
+                  <p>{{ 'Generar oportunidad individual' | translate }}</p>
+                  <ngb-progressbar type="info" [value]="10"></ngb-progressbar>
+
+                  <p>{{ 'Generar oportunidad en grupo (tiempo por unidad)' | translate }}</p>
+                  <ngb-progressbar type="info" [value]="5"></ngb-progressbar>
+
+                  <p>{{ 'Verificar contacto comercial' | translate }}</p>
+                  <ngb-progressbar type="info" [value]="10"></ngb-progressbar>
+
+                  <h4>
+                    <b>{{ 'Visitas' | translate }}</b>
+                  </h4>
+                  <p>{{ 'Prepación de visita menos detallada' | translate }}</p>
+                  <ngb-progressbar type="info" [value]="10"></ngb-progressbar>
+
+                  <p>{{ 'Preparación vista normal' | translate }}</p>
+                  <ngb-progressbar type="info" [value]="40"></ngb-progressbar>
+
+                  <p>{{ 'Preparación visita mas detallada' | translate }}</p>
+                  <ngb-progressbar type="info" [value]="80"></ngb-progressbar>
+
+                  <p>{{ 'Realización de visita de duración mínima' | translate }}</p>
+                  <ngb-progressbar type="success" [value]="40"></ngb-progressbar>
+
+                  <p>{{ 'Realización de visita de duración normal' | translate }}</p>
+                  <ngb-progressbar type="warning" [value]="60"></ngb-progressbar>
+
+                  <p>{{ 'Realización de visita de duración máxima' | translate }}</p>
+                  <ngb-progressbar type="danger" [value]="80"></ngb-progressbar>
+                </div>
+                <div class="container col-md-6">
+                  <h4>
+                    <b>{{ 'Ofertas' | translate }}</b>
+                  </h4>
+                  <p>{{ 'Elaborar ofertas' | translate }}</p>
+                  <ngb-progressbar type="info" [value]="20"></ngb-progressbar>
+
+                  <p>{{ 'Presentar oferta con duración mínima' | translate }}</p>
+                  <ngb-progressbar type="success" [value]="35"></ngb-progressbar>
+
+                  <p>{{ 'Presentar oferta con duración normal' | translate }}</p>
+                  <ngb-progressbar type="warning" [value]="45"></ngb-progressbar>
+
+                  <p>{{ 'Presentar oferta con duración máxima' | translate }}</p>
+                  <ngb-progressbar type="danger" [value]="75"></ngb-progressbar>
+
+
+                  <h4>
+                    <b>{{ 'Contratos' | translate }}</b>
+                  </h4>
+                  <p>{{ 'Reunión de cierre con duración mínima' | translate }}</p>
+                  <ngb-progressbar type="success" [value]="30"></ngb-progressbar>
+
+                  <p>{{ 'Reunión de cierre con duración normal' | translate }}</p>
+                  <ngb-progressbar type="warning" [value]="40"></ngb-progressbar>
+
+                  <p>{{ 'Reunión de cierre con duración máxima' | translate }}</p>
+                  <ngb-progressbar type="danger" [value]="80"></ngb-progressbar>
+                </div>
+              </div>
+              <h3>{{ 'Cambio del grado de propensión de los clientes potenciales en el tiempo' | translate }}</h3>
+              <p>
+                {{ 'Un cliente potencial pendiente de recibir la visita comercial, la oferta o de mantener la reunión para el cierre de contrato puede empeorar su grado de propensión a la compra si esas acciones no se producen en un plazo de tiempo que es variable. En estos casos, los clientes potenciales cambian al nuevo color que refleja su estado.' | translate }}
+                <h3>{{ 'Consecución de objetivos' | translate }}</h3>
+                <p>
+                  {{ 'El alumno deberá alcanzar el objetivo de ventas fijado antes de consumir el tiempo total de la gamificación, que representa un trimestre. El nivel de cumplimiento de este objetivo se puede ver en el segmento de parámetros denominado cumplimiento de objetivos en cualquier momento de la ejecución del juego.' | translate }}
+                </p>
+                <h3>{{ 'Panel de Control' | translate }}</h3>
+                <p>
+                  {{ 'El juego proporciona un panel de control mediante el que el usuario puede interactuar con la gamificación y realizar su proceso de toma de decisiones. El panel de control tiene distintos segmentos funcionales. El primer segmento es el que contiene los botones dedicados a iniciar y finalizar la simulación. El botón Finalizar permite una salida anticipada de la simulación, pero hay que tener en cuenta que el resultado de todas las ejecuciones de la simulación, incluso las terminadas anticipadamente, queda registrado con todos los datos de uso, para facilitar la recopilación de resultados cuando se trata de cursos, por lo que no se recomienda usar esta opción en caso de pruebas académicas sin consultar con su instructor o el administrador de la instancia.' | translate }}
+                </p>
+                <p>{{ 'El segundo segmento está dividido en cuatro bloques:' | translate }}
+                </p>
+                <ul class="fa-ul">
+                  <li>
+                    <i class="fa-li fa fa-check"></i>{{ 'Oportunidades' | translate }}</li>
+                  <li>
+                    <i class="fa-li fa fa-check"></i>{{ 'Visitas' | translate }}</li>
+                  <li>
+                    <i class="fa-li fa fa-check"></i>{{ 'Ofertas' | translate }}</li>
+                  <li>
+                    <i class="fa-li fa fa-check"></i>{{ 'Contratos' | translate }}</li>
+                </ul>
+                <p>
+                  {{ 'El funcionamiento de los procesos de este segmento ha sido explicado anteriormente dentro de las reglas del juego.' | translate }}
+                </p>
+                {{ 'El siguiente segmento del panel de control ofrece la información del valor de los parámetros de la gamificación, por ejemplo, el valor marcado para el cumplimiento del objetivo de ventas. Este valor puede ser modificado por el instructor de la instancia de gamificación. Este segmento también incluye la duración relativa de cada una de las tareas a realizar durante el juego.' | translate }}
+                <p>
+                  {{ 'En el resto de segmentos del panel de control se puede acceder en cualquier momento a información gráfica con el grado de eficiencia comercial, la tasa de conversión y el nivel de cumplimiento de objetivo. La definición de cada uno de los estos conceptos está incluida en el panel.' | translate }}
+                </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

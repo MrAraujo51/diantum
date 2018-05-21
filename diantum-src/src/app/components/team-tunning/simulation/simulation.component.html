@@ -1,0 +1,422 @@
+<!-- Begin Header Image -->
+<header class="center header-sm bg-dark" style="background: url(assets/images/bg/smoke2.png)">
+  <div class="container fade-text">
+    <h1 class="header-title text-center">TEAM TUNING</h1>
+    <p class="header-message text-center">Construir equipos de alto rendimiento para consiguir los objetivos de la organización</p>
+  </div>
+</header>
+<!-- End Header Image -->
+<!--  End Topbar simple -->
+<!-- Begin  Blog Single -->
+<section class="section-blog blog-single clearfix" style="background:#b9cfdf;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="post">
+          <!-- First segment. Start and end simulation -->
+          <div class="post-thumbnail">
+            <h2 class="center" style="color:#788cb9;">
+              <strong>Panel de Control</strong>
+            </h2>
+          </div>
+          <div class="post-text">
+            <div class="post-meta">
+              Botones de inicio y finalización de la gamificación. Se recomienda no finalizar la ejecución anticipadamente.
+            </div>
+            <div class="post-content">
+              <div class="col-md-12">
+
+                <div class="col-md-6">
+                  <button type="button" class="btn btn-sm btn-block btn-success" (click)="startSimulation()">
+                    <i class="fa fa-play pull-left"></i>Iniciar Simulación</button>
+                </div>
+                <div class="col-md-6">
+                  <button type="button" class="btn btn-sm btn-block btn-danger">
+                    <i class="fa fa-list pull-left"></i>Finalizar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End first segment simulation -->
+          <!-- Time control group -->
+          <div class="post-thumbnail">
+            <a name="service_level_graph"></a>
+            <h3 class="center" style="color:#788cb9;">
+              <strong>Control del tiempo</strong>
+            </h3>
+          </div>
+          <div class="post-text">
+            <div class="post-meta">
+              Tiempo consumido
+            </div>
+            <div class="post-content">
+              <div class="col-md-12">
+                <label class="center">
+                  <b>Tiempo total</b>
+                </label>
+                <div class="progress progress-bar-thin m-b-40">
+                  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"
+                    style="width: 36%;">
+                    <span style="opacity: 1;">36%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of time control group -->
+          <div class="post-thumbnail">
+            <h3 class="center" style="color:#788cb9;">
+              <strong>Gestión de Equipos</strong>
+            </h3>
+          </div>
+          <div class="post-text">
+            <div class="post-content">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="center">
+                    <h3>ASPECTOS GENERALES DEL EQUIPO</h3>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="col-md-12">
+                        <h3 class="center">Objetivos</h3>
+                      </div>
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-sm btn-block btn-blue" (click)="distributionObjetives()">
+                          <i class="fa fa-user pull-left"></i>Distribución uniforme</button>
+                      </div>
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-sm btn-block btn-blue" (click)="openGoalUpdateModal()">
+                          <i class="fa fa-database pull-left"></i>Asignación individual</button>
+                      </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                      <div class="col-md-12">
+                        <h3 class="center">Acciones grupales</h3>
+                      </div>
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-sm btn-block btn-warning">
+                          <i class="fa fa-user pull-left"></i>Comunicación objetivos de grupo</button>
+                      </div>
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-sm btn-block btn-warning">
+                          <i class="fa fa-database pull-left"></i>Evento motivacional</button>
+                      </div>
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-sm btn-block btn-warning">
+                          <i class="fa fa-database pull-left"></i>Sesión de team building</button>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="col-md-12">
+                        <h3 class="center">Consultas</h3>
+                      </div>
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-sm btn-block btn-blue">
+                          <i class="fa fa-user pull-left"></i>Métricas de equipo</button>
+                      </div>
+                      <div class="col-md-12">
+                        <button type="button" class="btn btn-sm btn-block btn-blue">
+                          <i class="fa fa-database pull-left"></i>Métricas individuales</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="center">
+                    <h3>COMPONENTES DE EQUIPO : 8</h3>
+                  </div>
+                </div>
+                <!-- Team elements -->
+                <!--First row-->
+
+                <div class="row">
+                  <div *ngFor="let comp of teamComponents" class="col-md-2 col-sm-2 p-5 comp-btn" [ngClass]="{selected: selectedComp?.code == comp.code}"
+                    (click)="onSelectionComponent(comp)">
+                    <h4 class="center">{{ comp.name | translate }}</h4>
+                    <img src="assets/images/teamtuningicons/{{ comp.gender }}-blue-{{ comp.code }}.png" class="img-responsive small.images" alt="team member"
+                      *ngIf="!distributedObj">
+                    <img src="assets/images/teamtuningicons/{{ comp.gender }}-{{ comp.color }}-{{ comp.code }}.png" class="img-responsive small.images"
+                      alt="team member" *ngIf="distributedObj">
+                  </div>
+                </div>
+                <div *ngIf="selectedComp" class="col-md-6 col-md-offset-4 p-20 b-t-20 border-right border-bottom" style="background-color:#f5f8fa;">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="row center">
+                        <h4 class="center">{{ selectedComp.name }}</h4>
+                      </div>
+                      <img src="assets/images/teamtuningicons/{{selectedComp.gender}}-{{selectedComp.color}}-{{selectedComp.code}}.png" class="img-responsive small.images"
+                        alt="team member">
+                      <div class="center m-t-20">
+                        <h4 class="center">Datos del Periodo</h4>
+                      </div>
+                      <div class="center">
+                        <label class="no-margin">Rendimiento: {{ (selectedComp.performance) * (selectedComp.objPeriod) / 100 |  number : '1.0-0' }}</label>
+                        <h6 class="no-margin">{{selectedComp.performance}}%</h6>
+                      </div>
+                      <ngb-progressbar type="info" [value]="selectedComp.performance"></ngb-progressbar>
+                      <!-- <div class="progress">
+                        <div class="progress-bar progress-bar-rendimiento" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"
+                          style="width: 90%;"></div>
+                      </div> -->
+                      <div class="center m-t-20">
+                        <label>Calidad: {{ selectedComp.quality }}%</label>
+                      </div>
+                      <ngb-progressbar type="warning" [value]="selectedComp.quality"></ngb-progressbar>
+                      <!-- <div class="progress">
+                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"
+                          style="width: 35%;"></div>
+                      </div> -->
+                    </div>
+                    <div class="col-md-8">
+                      <div class="row">
+                        <h4 class="center">Objetivo General</h4>
+                        <div class="form-group">
+                          <label class="col-sm-3 control-label">Asignado</label>
+                          <div class="col-sm-6">
+                            <input class="form-control input-sm" type="text" value="{{ selectedComp.objTotal }}" placeholder="Objetivo">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row center">
+                        <h4 class="center">Tendencias de las acciones</h4>
+                        <i class="far fa-thumbs-up"></i>
+                      </div>
+                      <div class="row center m-t-10">
+                        <h4 class="center">Acumulado</h4>
+                        <div class="col-md-6">
+                          <circle-progress
+                            [percent]="85"
+                            [radius]="60"
+                            [backgroundStrokeWidth]="2"
+                            [space]="3"
+                            [toFixed]="0"
+                            [maxPercent]="150"
+                            [outerStrokeWidth]="10"
+                            [outerStrokeColor]="'#17a2b8'"
+                            [innerStrokeColor]="'#17a3b890'"
+                            [innerStrokeWidth]="3"
+                            [animation]="true"
+                            [animationDuration]="300"
+                            [showSubtitle]="true"
+                            [subtitle]="['Nivel de','cumplimiento', 'de objetivos']"
+                            [subtitleFontSize]="13"
+                          ></circle-progress>
+                        </div>
+                        <div class="col-md-6">
+                          <circle-progress
+                            [percent]="85"
+                            [radius]="60"
+                            [backgroundStrokeWidth]="2"
+                            [space]="3"
+                            [toFixed]="0"
+                            [maxPercent]="100"
+                            [outerStrokeWidth]="10"
+                            [outerStrokeColor]="'#ffc107'"
+                            [innerStrokeColor]="'#ffc1078e'"
+                            [innerStrokeWidth]="3"
+                            [animation]="true"
+                            [animationDuration]="300"
+                            [showSubtitle]="true"
+                            [subtitle]="['Nivel de','cumplimiento', 'de calidad']"
+                            [subtitleFontSize]="13"
+                          ></circle-progress>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12 m-t-30">
+                      <div class="col-md-4">
+                        <button type="button" class="btn btn-primary btn-block btn-embossed" (click)="openLogModal()">Log</button>
+                      </div>
+                      <div class="col-md-4">
+                        <button type="button" class="btn btn-warning btn-block btn-embossed" (click)="openActionsModal()">Acciones</button>
+                      </div>
+                      <div class="col-md-4">
+                        <button type="button" class="btn btn-primary btn-block btn-embossed" (click)="openProfileModal()">Perfil</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- End of group one-Control Panel -->
+          <!-- Group Parameters and grphics links -->
+          <div class="post-thumbnail">
+            <h3 class="center" style="color:#788cb9;">
+              <strong>Parámetros y gráficos</strong>
+            </h3>
+          </div>
+          <div class="post-text">
+            <div class="post-meta">
+              Consulta de parámetros de ejecución.
+            </div>
+            <div class="post-content">
+              <div class="panel-group panel-accordion" id="accordion_candies">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <div class="center">
+                      <h3>PARAMETROS</h3>
+                    </div>
+                    <h4>
+                      <a data-toggle="collapse" data-parent="#accordion1" href="#parameters-sales-activity">
+                        Consultar Estado
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="parameters-sales-activity" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <table class="table table-striped f-12">
+                        <thead>
+                        </thead>
+                        <tbody>
+                          <tr class="primary">
+                            <td>Distribución de perfiles de grupo</td>
+                            <td id="group_size_i">Uniforme completa</td>
+                          </tr>
+                          <tr class="primary">
+                            <td>Número de periodos de la gamificación</td>
+                            <td id="plazo_entrega_i">52</td>
+                          </tr>
+                          <tr class="primary">
+                            <td>Objetivos generales del grupo</td>
+                            <td id="plazo_entrega_i">41600</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <br>
+                      <h4 class="center">
+                        <b>Duración relativa de las actividades del manager</b>
+
+                      </h4>
+                      <br>
+                      <div class="row">
+                        <div class="container col-md-6">
+                          <h4>
+                            <b>Comunicación de objetivos de grupo</b>
+                          </h4>
+                          <div class="progress">
+                            <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            <span></span>
+                          </div>
+                          <h4>
+                            <b>Reunión individual de evaluación</b>
+                          </h4>
+                          <div class="progress">
+                            <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                            <span></span>
+                          </div>
+                          <h4>
+                            <b>Sesión de coaching</b>
+                          </h4>
+                          <div class="progress">
+                            <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                            <span></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="center">
+                    <h3>GRÁFICOS</h3>
+                  </div>
+                  <div class="col-md-4 center">
+                    <a href="#efficiency">
+                      <button type="button" id="pedido_i" value="" class="btn btn-blue btn-rounded">Objetivos de grupo</button>
+                    </a>
+                  </div>
+                  <div class="col-md-4 center">
+                    <a href="#ratio">
+                      <button type="button" id="conversion_i" value="" class="btn btn-blue btn-rounded">Objetivos individuales</button>
+                    </a>
+                  </div>
+                  <div class="col-md-4 center">
+                    <a href="#objective">
+                      <button type="button" value="" class="btn btn-blue btn-rounded">Métricas del equipo</button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of group parameters and graphs links -->
+          <!-- Sales efficiency group -->
+          <a name="efficiency"></a>
+          <div class="post-thumbnail">
+            <h3 class="center" style="color:#788cb9;">
+              <strong>Objetivos de grupo</strong>
+            </h3>
+          </div>
+          <div class="post-text">
+            <div class="post-meta">
+              Grado de cumplimiento de objetivos del equipo
+            </div>
+            <div class="post-content">
+
+            </div>
+          </div>
+          <!-- End Sales efficiency group -->
+          <!-- Sales convertion ratio group -->
+          <a name="ratio"></a>
+          <div class="post-thumbnail">
+            <h3 class="center" style="color:#788cb9;">
+              <strong>Objetivos individuales</strong>
+            </h3>
+          </div>
+          <div class="post-text">
+            <div class="post-meta">
+              Detalle del grado de cumplimiento de objetivos individuales
+            </div>
+            <div class="post-content">
+            </div>
+          </div>
+          <!--End sales convertion ratio group -->
+          <!-- Objetives achievement group -->
+          <a name="objective"></a>
+          <div class="post-thumbnail">
+            <h3 class="center" style="color:#788cb9;">
+              <strong>Métricas del equipo</strong>
+            </h3>
+          </div>
+          <div class="post-text">
+            <div class="post-meta">
+              Métricas iniciales y finales del equipo.
+            </div>
+            <div class="post-content">
+            </div>
+          </div>
+          <!-- Objetive achievement group-->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--End  Blog Single -->
+<!-- Begin Call to Action Contact -->
+<section class="section-call-action">
+  <div class="container center">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="section-title">¿Tiene dudas o sugerencias? </h3>
+        <p>Por favor, antes de salir, asegurese de que ha terminado su simulación. Estaremos encantados de atenderle.</p>
+        <p> Muchas gracias.</p>
+        <br>
+      </div>
+      <div class="col-md-12">
+        <a href="contact.html" class="btn btn-dark btn-rounded hover-effect">Contacte con nosotros</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="form-group">
+  <label class="col-md-8"></label>
+  <input class="form-control col-md-4 input-sm form-white">
+</div>
+
+
+

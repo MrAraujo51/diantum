@@ -1,0 +1,70 @@
+<section class="section-basic faq p-t-10">
+  <aside id="aside" class="bg-gray-light">
+    <div class="account-content">
+      <div class="account-inner bg-gray">
+        <div class="big-icon">
+          <i class="line-icon-settings"></i>
+        </div>
+        <div class="sidebar-inner">
+          <br>
+          <br>
+          <h2 class="center" style="color: #000000;">{{ 'Mi Area' | translate }}</h2>
+          <div class="border-top bg-white bd-6 m-r-10 m-t-20 p-10" style="color: #000000;">
+
+            <ul>
+              <li>
+                <div class="center">
+                  <i class="line-icon-user center"></i>
+                </div>
+              </li>
+              <li>
+                <i class="line-icon-login m-r-10"></i>
+                <label class="control-label">
+                  <strong> {{ user.username}}</strong>
+                </label>
+              </li>
+              <li>
+                <i class="line-icon-envelope-open m-r-10"></i>
+                <label class="control-label f-12"> {{ user.email }}</label>
+              </li>
+            </ul>
+
+          </div>
+          <div class="border-top bg-white bd-6 m-r-10 m-t-20 p-10" style="color: #000000;">
+
+            <ul>
+              <li routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  [routerLink]="['user']">
+                <a [routerLink]="['user']">{{ 'Usuarios' | translate }}
+                  <i class="fa fa-angle-right"></i>
+                </a>
+              </li>
+              <li routerLinkActive="active" 
+                  [routerLinkActiveOptions]="{ exact: true }">
+                <a [routerLink]="['admin']">{{ 'Administradores' | translate }}
+                  <i class="fa fa-angle-right"></i>
+                </a>
+              <!-- </li>
+              <li routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }">
+                <a [routerLink]="['client']" >Clientes
+                  <i class="fa fa-angle-right"></i>
+                </a>
+              </li> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="answer">
+    <a href="#" class="toggle-aside">
+      <i class="fa fa-bars"></i>
+    </a>
+    <div class="tab-content" style="min-height: 650px; max-width: 100%;">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</section>

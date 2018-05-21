@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ 'Modificación de Objetivos Individuales' | translate }}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <h5 class="center">Objetivo del equipo: {{ teamObj }}</h5>
+  <div class="row" *ngFor="let comp of teamComponents; let i = index;">
+    <label class="col-md-4 col-md-offset-2">{{ comp.name }}:</label>
+    <input type="number" class="form-control col-md-4 input-sm form-white" [(ngModel)]="objectivesTeam.objectives[i]" onlyNumber
+      limitNumber [min]="(teamObj/ 8) - ((teamObj/ 8)*0.20)" [max]="(teamObj/ 8) + ((teamObj/ 8)*0.20)" value="{{ comp.objTotal }}"
+      (keyup)="onTotalObj($event, i)" *ngIf="comp.changeCount < 2">
+      <h6 class="col-md-6" *ngIf="comp.changeCount >= 2">Ya has cambiado 2 veces el objetivo</h6>
+  </div>
+  <h5 class="center">Pendiente de asignar: {{ teamObj - objectivesTeam.total }}</h5>
+</div>
+<div class="modal-footer">
+
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close()">{{ 'Cerrar' | translate }}</button>
+  <button type="submit" class="btn btn-primary col-md-6" [disabled]="teamObj != objectivesTeam.total" (click)="save()">Guardar</button>
+</div>

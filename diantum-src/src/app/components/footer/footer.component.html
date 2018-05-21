@@ -1,0 +1,77 @@
+<!-- Begin Footer 3 columns Dark -->
+<div class="section-footer footer-wrap bg-dark" *ngIf="isHidden()">
+  <div class="container footer center">
+    <div class="row">
+      <div class="col-md-3">
+        <h4 style="color: rgb(185, 207, 223); font-size: 15px; background-color: rgba(0, 0, 0, 0); font-family: Dosis, &quot;Open Sans&quot;, arial;">Diantum</h4>
+        <p>
+          <a *ngIf="translate.currentLang === 'es'" href="http://www.diantum.com/index.php/es/" target="_blank">{{ 'Acerca de Diantum' | translate }}</a>
+          <a *ngIf="translate.currentLang === 'en'" href="http://www.diantum.com/index.php/en/" target="_blank">{{ 'Acerca de Diantum' | translate }}</a>          
+        </p>
+      </div>
+      <div class="col-md-3">
+        <h4 style="color: rgb(185, 207, 223); font-size: 15px; background-color: rgba(0, 0, 0, 0); font-family: Dosis, &quot;Open Sans&quot;, arial;">{{ 'Información de contacto' | translate }}</h4>
+        <p>
+          <i class="line-icon-map"></i>Lagasca, 95 28006 Madrid Spain</p>
+        <p>
+          <i class="line-icon-envelope-open"></i>support@diantum.com</p>
+        <p>
+          <a *ngIf="translate.currentLang === 'es'" href="http://www.diantum.com/index.php/es/contact-us-3" target="_blank">{{ 'Detalles de contacto' | translate }}</a>
+          <a *ngIf="translate.currentLang === 'en'" href="http://www.diantum.com/index.php/en/contact-us-2" target="_blank">{{ 'Detalles de contacto' | translate }}</a>          
+        </p>
+      </div>
+      <div class="col-md-3">
+        <h4 style="color: rgb(185, 207, 223); font-size: 15px; background-color: rgba(0, 0, 0, 0); font-family: Dosis, &quot;Open Sans&quot;, arial;">{{ 'Información Legal' | translate }}</h4>
+        <p>
+          <a *ngIf="translate.currentLang === 'es'" href="http://www.diantum.com/index.php/es/index.php?option=com_content&view=article&id=88" target="_blank">{{ 'Aviso Legal' | translate }}</a>
+          <a *ngIf="translate.currentLang === 'en'" href="http://www.diantum.com/index.php/en/index.php?option=com_content&view=article&layout=edit&id=92" target="_blank">{{ 'Aviso Legal' | translate }}</a>          
+        </p>
+        <p>
+          <a *ngIf="translate.currentLang === 'es'" href="http://www.diantum.com/index.php/es/index.php?option=com_content&view=article&layout=edit&id=91" target="_blank">{{ 'Condiciones y Términos de Uso' | translate }}</a>
+          <a *ngIf="translate.currentLang === 'en'" href="http://www.diantum.com/index.php/en/index.php?option=com_content&view=article&id=94" target="_blank">{{ 'Condiciones y Términos de Uso' | translate }}</a>          
+        </p>
+        <p>
+          <a *ngIf="translate.currentLang === 'es'" href="http://www.diantum.com/index.php/es/index.php?option=com_content&view=article&id=90" target="_blank">{{ 'Política de Privacidad' | translate }}</a>
+          <a *ngIf="translate.currentLang === 'en'" href="http://www.diantum.com/index.php/en/index.php?option=com_content&view=article&layout=edit&id=93" target="_blank">{{ 'Política de Privacidad' | translate }}</a>          
+        </p>
+        <p>
+          <a *ngIf="translate.currentLang === 'es'" href="http://www.diantum.com/index.php/es/accordion-faq-es" target="_blank">{{ 'Preguntas Frecuentes' | translate }}</a>
+          <a *ngIf="translate.currentLang === 'en'" href="http://www.diantum.com/index.php/en/accordion-faq-en" target="_blank">{{ 'Preguntas Frecuentes' | translate }}</a>          
+        </p>
+      </div>
+      <div class="col-md-3">
+        <h4 style="color: rgb(185, 207, 223); font-size: 15px; background-color: rgba(0, 0, 0, 0); font-family: Dosis, &quot;Open Sans&quot;, arial;">{{ 'Redes Sociales' | translate }}</h4>
+        <div class="social-icons social-square">
+          <ul class="text-left">
+            <li>
+              <a href="https://twitter.com/Diantum_" target="_blank" class="animated" data-animation="fadeIn" data-animation-delay="500" appAppear>
+                <i class="fab fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/u/0/100296551929219246313" target="_blank" class="animated" data-animation="fadeIn" data-animation-delay="700" appAppear>
+                <i class="fab fa-google-plus"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/company/11451373/" target="_blank" class="animated" data-animation="fadeIn" data-animation-delay="1200" appAppear>
+                <i class="fab fa-linkedin"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Footer 3 columns Dark -->
+<!-- Begin Copyright Dark -->
+<div class="section-copyright bg-dark" *ngIf="isHidden()">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <p>DIANTUM, S.L.U. {{ 'Todos los Derechos Reservados' | translate }} @ 2017</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+.avatar {
+    display: inline-block;
+    overflow: hidden;
+    line-height: 1;
+    vertical-align: middle;
+    border-radius: 50%;
+    margin: 50% 0 50%;
+    height: 35px;
+}
+
+.dropdown:hover>.dropdown-menu {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+  }
